@@ -7,11 +7,11 @@ import com.lucas.sistema.entrega.view.menu.Menu;
 
 public class MenuAdicionarCliente extends Menu<ClienteAdicionarRequest> {
 
-    private final ClienteController controller;
+    private final ClienteController clienteController;
 
-    protected MenuAdicionarCliente(Leitor leitor, ClienteController controller) {
+    protected MenuAdicionarCliente(Leitor leitor, ClienteController clienteController) {
         super(leitor);
-        this.controller = controller;
+        this.clienteController = clienteController;
     }
 
     @Override
@@ -35,6 +35,8 @@ public class MenuAdicionarCliente extends Menu<ClienteAdicionarRequest> {
         System.out.println("------------------------------------------------------------------------------");
 
         ClienteAdicionarRequest clienteAdicionarRequest = new ClienteAdicionarRequest(nome, cpfCnpj, cidade, estado);
+
+        clienteController.
 
 
 

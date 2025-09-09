@@ -14,6 +14,10 @@ public class Cliente {
 
     private String estado;
 
+    public long getId() {
+        return id;
+    }
+
     public Cliente(long id, String nome, String cpfCnpj, String endereco, String cidade, String estado) {
         this.id = id;
         this.nome = nome;
@@ -23,8 +27,13 @@ public class Cliente {
         this.estado = estado;
     }
 
-    public long getId() {
-        return id;
+    public Cliente(String nome, String cpfCnpj, String endereco, String cidade, String estado) {
+        this.id = -1;
+        this.nome = nome;
+        this.cpfCnpj = cpfCnpj;
+        this.endereco = endereco;
+        this.cidade = cidade;
+        this.estado = estado;
     }
 
     public String getNome() {
