@@ -1,17 +1,20 @@
 package com.lucas.sistema.entrega.view.menu.cliente;
 
-import com.lucas.sistema.entrega.modules.cliente.application.controller.ClienteController;
 import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteAdicionarRequest;
+import com.lucas.sistema.entrega.view.port.ClienteController;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
+import com.lucas.sistema.entrega.view.port.ClienteDtoProvider;
 
 public class MenuAdicionarCliente extends Menu<ClienteAdicionarRequest> {
 
     private final ClienteController clienteController;
+    private final ClienteDtoProvider clienteDtoProvider;
 
-    protected MenuAdicionarCliente(Leitor leitor, ClienteController clienteController) {
+    protected MenuAdicionarCliente(Leitor leitor, ClienteController clienteController, ClienteDtoProvider clienteDtoProvider) {
         super(leitor);
         this.clienteController = clienteController;
+        this.clienteDtoProvider = clienteDtoProvider;
     }
 
     @Override
@@ -34,17 +37,13 @@ public class MenuAdicionarCliente extends Menu<ClienteAdicionarRequest> {
 
         System.out.println("------------------------------------------------------------------------------");
 
-        ClienteAdicionarRequest clienteAdicionarRequest = new ClienteAdicionarRequest(nome, cpfCnpj, cidade, estado);
-
-        clienteController.
-
-
+        setResposta(clienteDtoProvider.criarDtoCriarCliente(nome, cpfCnpj, cidade, estado));
 
     }
 
     @Override
     public void executarMenu() {
-
+        var clienteResponse = clienteController.adicionar(getResposta());
     }
 
     @Override
