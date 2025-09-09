@@ -23,6 +23,21 @@ public class MenuAdicionarCliente extends Menu<ClienteAdicionarRequest> {
         System.out.println(" Nome do cliente: ");
         String nome = getLeitor().nextLine();
 
+        System.out.println(" CPF ou CNPJ: ");
+        String cpfCnpj = getLeitor().nextLine();
+
+        System.out.println(" Cidade: ");
+        String cidade = getLeitor().nextLine();
+
+        System.out.println(" Estado: ");
+        String estado = getLeitor().nextLine();
+
+        System.out.println("------------------------------------------------------------------------------");
+
+        ClienteAdicionarRequest clienteAdicionarRequest = new ClienteAdicionarRequest(nome, cpfCnpj, cidade, estado);
+
+
+
     }
 
     @Override
