@@ -62,4 +62,9 @@ public class Entrega {
     public long getId() {
         return id;
     }
+
+    public boolean validarMudancaDeStatus() {
+        return !status.equals(EntregaStatus.ENTREGUE);
+
+    }
 }

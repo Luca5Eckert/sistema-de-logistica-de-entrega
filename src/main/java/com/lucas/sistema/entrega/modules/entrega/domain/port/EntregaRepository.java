@@ -6,4 +6,7 @@ public interface EntregaRepository {
 
     void adicionar(Entrega entrega);
 
+    Entrega buscarPorId(long id);
+
+    void save(Entrega entrega);
 }
