@@ -5,6 +5,8 @@ import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteAdiciona
 import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse;
 import com.lucas.sistema.entrega.modules.cliente.application.port.ClienteService;
 import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
+import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.ClienteDependenciaException;
+import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.ClienteNullException;
 import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.localizacao.LocalizacaoCidadeInvalidaException;
 import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.localizacao.LocalizacaoEstadoInvalidaException;
 import com.lucas.sistema.entrega.modules.cliente.domain.port.ClienteRepository;
@@ -32,6 +34,16 @@ public class ClienteServiceAdapter implements ClienteService {
         if(validadorLocalizacao.valida(cidade)) throw new LocalizacaoCidadeInvalidaException("Cidade não é valida");
 
         if(validadorLocalizacao.valida(estado)) throw new LocalizacaoEstadoInvalidaException("Estado não é valido");
+
+    }
+
+    @Override
+    public void excluir(long id) {
+        if(clienteRepository.buscarEntregaDependente(id)) throw new ClienteDependenciaException("Não é possível deletar um cliente que possui uma entrega dependente a ele");
+
+        if(clienteRepository.buscarPedidoDependente(id)) throw new ClienteDependenciaException("Não é possível deletar um cliente que possui uma entrega dependente a ele");
+
+        clienteRepository.excluirPorId(id);
 
     }
 

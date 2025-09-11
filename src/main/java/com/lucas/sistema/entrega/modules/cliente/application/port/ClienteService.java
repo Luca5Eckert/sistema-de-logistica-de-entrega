@@ -4,4 +4,6 @@ import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 
 public interface ClienteService {
     void adicionar(Cliente cliente);
+
+    void excluir(long id);
 }

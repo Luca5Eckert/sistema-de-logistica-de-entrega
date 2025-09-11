@@ -30,7 +30,7 @@ public class ClienteControllerAdapter implements ClienteController {
 
     @Override
     public void excluir(ClienteExcluirRequest clienteExcluirRequest){
-        ser
+        clienteService.excluir(clienteExcluirRequest.id());
     }
 
 }
