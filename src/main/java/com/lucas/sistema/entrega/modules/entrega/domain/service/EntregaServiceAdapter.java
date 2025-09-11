@@ -1,11 +1,14 @@
 package com.lucas.sistema.entrega.modules.entrega.domain.service;
 
+import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.entrega.application.port.EntregaService;
 import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
 import com.lucas.sistema.entrega.modules.entrega.domain.enumerator.EntregaStatus;
 import com.lucas.sistema.entrega.modules.entrega.domain.exceptions.EntregaNullException;
 import com.lucas.sistema.entrega.modules.entrega.domain.exceptions.EntregaStatusNullException;
 import com.lucas.sistema.entrega.modules.entrega.domain.port.EntregaRepository;
+
+import java.util.List;
 
 public class EntregaServiceAdapter implements EntregaService {
 
@@ -40,6 +43,21 @@ public class EntregaServiceAdapter implements EntregaService {
 
         return entrega;
 
+    }
+
+    @Override
+    public List<Entrega> pegarEntregas() {
+        return entregaRepository.pegarTodas().orElseThrow(() -> new EntregaNullException("Não foi encontrada nenhuma entrega disponível"));
+    }
+
+    @Override
+    public long pegarQuantidadeEntregasPorMotorista(long idMotorista) {
+        return entregaRepository.pegarQuantidadeEntregaPorMotorista();
+    }
+
+    @Override
+    public List<Cliente> pegarClientesComMaiorQuantidadeEntregas(){
+        return entregaRepository.pegarClientesComMaiorQuantidadeEntregas();
     }
 
 }
