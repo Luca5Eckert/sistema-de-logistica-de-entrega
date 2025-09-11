@@ -13,24 +13,19 @@ import com.lucas.sistema.entrega.modules.cliente.domain.port.ValidadorLocalizaca
 public class ClienteServiceAdapter implements ClienteService {
 
     private final ClienteRepository clienteRepository;
-    private final ClienteMapper clienteMapper;
     private final ValidadorLocalizacao validadorLocalizacao;
 
-    public ClienteServiceAdapter(ClienteRepository clienteRepository, ClienteMapper clienteMapper, ValidadorLocalizacao validadorLocalizacao) {
+    public ClienteServiceAdapter(ClienteRepository clienteRepository, ValidadorLocalizacao validadorLocalizacao) {
         this.clienteRepository = clienteRepository;
-        this.clienteMapper = clienteMapper;
         this.validadorLocalizacao = validadorLocalizacao;
     }
 
     @Override
-    public ClienteResponse adicionar(ClienteAdicionarRequest clienteAdicionarRequest) {
-        validaLocalizacao(clienteAdicionarRequest.cidade(), clienteAdicionarRequest.estado());
-
-        Cliente cliente = clienteMapper.toEntity(clienteAdicionarRequest);
+    public void adicionar(Cliente cliente) {
+        validaLocalizacao(cliente.getCidade(), cliente.getEstado());
 
         clienteRepository.adicionar(cliente);
 
-        return clienteMapper.toResponse(cliente);
     }
 
     private void validaLocalizacao(String cidade, String estado) {

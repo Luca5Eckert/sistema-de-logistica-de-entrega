@@ -1,8 +1,7 @@
 package com.lucas.sistema.entrega.modules.cliente.application.port;
 
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteAdicionarRequest;
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse;
+import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 
 public interface ClienteService {
-    ClienteResponse adicionar(ClienteAdicionarRequest clienteAdicionarRequest);
+    void adicionar(Cliente cliente);
 }
