@@ -28,11 +28,9 @@ public class EntregaServiceAdapter implements EntregaService {
     @Override
     public Entrega atualizarStatus(long id, EntregaStatus entregaStatus) {
 
-        if(entregaStatus == null) throw new EntregaStatusNullException("A entrega nova não pode ser nula");
+        if(entregaStatus == null) throw new EntregaStatusNullException("O status da entrega nova não pode ser nula");
 
-        var entrega = entregaRepository.buscarPorId(id);
-
-        if(entrega == null) throw new EntregaNullException("A entrega não pode ser vazia");
+        var entrega = entregaRepository.buscarPorId(id).orElseThrow(() -> new EntregaNullException("Entrega não encontrada com o id: " + id));
 
         entrega.validarMudancaDeStatus();
 
