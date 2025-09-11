@@ -6,4 +6,5 @@ public interface PedidoService {
 
     void adicionarPedido(Pedido pedido);
 
+    Pedido cancelarPedido(long idPedido);
 }

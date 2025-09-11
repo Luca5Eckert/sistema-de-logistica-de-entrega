@@ -1,6 +1,7 @@
 package com.lucas.sistema.entrega.modules.pedido.domain;
 
 import com.lucas.sistema.entrega.modules.pedido.domain.enumerator.PedidoStatus;
+import com.lucas.sistema.entrega.modules.pedido.domain.exception.PedidoValidacaoCancelamentoException;
 
 import java.time.LocalDateTime;
 
@@ -60,6 +61,16 @@ public class Pedido {
     }
 
     public void setStatus(PedidoStatus status) {
+        if(verificarCancelamento()) {
+            throw new PedidoValidacaoCancelamentoException("O pedido não pode ser cancelado quando já foi entregue");
+        }
         this.status = status;
+    }
+
+    public boolean verificarCancelamento() {
+        return switch(status){
+            case ENTREGUE -> false;
+            default -> true;
+        };
     }
 }

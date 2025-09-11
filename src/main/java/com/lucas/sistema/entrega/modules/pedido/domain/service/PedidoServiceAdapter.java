@@ -2,7 +2,9 @@ package com.lucas.sistema.entrega.modules.pedido.domain.service;
 
 import com.lucas.sistema.entrega.modules.pedido.application.port.PedidoService;
 import com.lucas.sistema.entrega.modules.pedido.domain.Pedido;
+import com.lucas.sistema.entrega.modules.pedido.domain.enumerator.PedidoStatus;
 import com.lucas.sistema.entrega.modules.pedido.domain.exception.PedidoNullException;
+import com.lucas.sistema.entrega.modules.pedido.domain.exception.PedidoValidacaoCancelamentoException;
 import com.lucas.sistema.entrega.modules.pedido.domain.port.PedidoRepository;
 
 public class PedidoServiceAdapter implements PedidoService {
@@ -15,10 +17,24 @@ public class PedidoServiceAdapter implements PedidoService {
 
     @Override
     public void adicionarPedido(Pedido pedido) {
-        if(pedido == null){
-            throw new PedidoNullException("O Pedido não pode estar vazio");
-        }
+        verificarPedidoNulo(pedido);
+
         pedidoRepository.adicionar(pedido);
     }
-    
+
+    @Override
+    public Pedido cancelarPedido(long pedidoId) {
+        Pedido pedido = pedidoRepository.buscar(pedidoId).orElseThrow(() -> new PedidoNullException("Não encontrado pedido com id: " + pedidoId));
+
+        pedido.setStatus(PedidoStatus.CANCELADO);
+
+        pedidoRepository.salvar(pedido);
+
+        return pedido;
+    }
+
+    private void verificarPedidoNulo(Pedido pedido){
+        if(pedido == null) throw new PedidoNullException("O Pedido não pode estar vazio");
+    }
+
 }
