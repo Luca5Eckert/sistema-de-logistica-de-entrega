@@ -28,4 +28,6 @@ public interface EntregaRepository {
      * @return devolve uma lista de clientes
      */
     List<Cliente> pegarClientesComMaiorQuantidadeEntregas();
+
+    void excluirPorId(long id);
 }

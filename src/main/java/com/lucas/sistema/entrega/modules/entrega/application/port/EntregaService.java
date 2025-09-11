@@ -17,4 +17,6 @@ public interface EntregaService {
     long pegarQuantidadeEntregasPorMotorista(long idMotorista);
 
     List<Cliente> pegarClientesComMaiorQuantidadeEntregas();
+
+    void excluirEntrega(long id);
 }

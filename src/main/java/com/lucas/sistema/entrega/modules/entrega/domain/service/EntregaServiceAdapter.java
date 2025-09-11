@@ -4,6 +4,7 @@ import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.entrega.application.port.EntregaService;
 import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
 import com.lucas.sistema.entrega.modules.entrega.domain.enumerator.EntregaStatus;
+import com.lucas.sistema.entrega.modules.entrega.domain.exceptions.EntregaExclusaoException;
 import com.lucas.sistema.entrega.modules.entrega.domain.exceptions.EntregaNullException;
 import com.lucas.sistema.entrega.modules.entrega.domain.exceptions.EntregaStatusNullException;
 import com.lucas.sistema.entrega.modules.entrega.domain.port.EntregaRepository;
@@ -58,6 +59,15 @@ public class EntregaServiceAdapter implements EntregaService {
     @Override
     public List<Cliente> pegarClientesComMaiorQuantidadeEntregas(){
         return entregaRepository.pegarClientesComMaiorQuantidadeEntregas();
+    }
+
+    @Override
+    public void excluirEntrega(long id) {
+        var entrega = entregaRepository.buscarPorId(id).orElseThrow(() -> new EntregaNullException("Não foi encontrada nenhuma entrega disponível"));
+
+        if(entrega.validarExclusao()) throw new EntregaExclusaoException("Entrega só pode ser excluida se for atrasada");
+
+        entregaRepository.excluirPorId(id);
     }
 
 }

@@ -67,4 +67,8 @@ public class Entrega {
         return !status.equals(EntregaStatus.ENTREGUE);
 
     }
+
+    public boolean validarExclusao() {
+        return !status.equals(EntregaStatus.ATRASADA);
+    }
 }

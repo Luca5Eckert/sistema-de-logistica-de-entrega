@@ -5,6 +5,7 @@ import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse
 import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAdicionarRequest;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAtualizarStatusRequest;
+import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaExcluirRequest;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaResponse;
 import com.lucas.sistema.entrega.modules.entrega.application.port.EntregaMapper;
 import com.lucas.sistema.entrega.modules.entrega.application.port.EntregaService;
@@ -32,6 +33,11 @@ public class EntregaController {
         return entregaMapper.toResponse(entrega);
 
     }
+
+    public void excluirEntrega(EntregaExcluirRequest entregaExcluirRequest){
+        entregaService.excluirEntrega(entregaExcluirRequest.id());
+    }
+
 
     public EntregaResponse atualizarStatus(EntregaAtualizarStatusRequest entregaAtualizarStatusRequest){
         var entrega = entregaService.atualizarStatus(entregaAtualizarStatusRequest.idEntrega(), entregaAtualizarStatusRequest.novoStatus());
