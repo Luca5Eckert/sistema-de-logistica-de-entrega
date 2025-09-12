@@ -6,11 +6,11 @@ import com.lucas.sistema.entrega.modules.pedido.domain.port.PedidoRepository;
 import java.util.Map;
 import java.util.Optional;
 
-public class PedidoRepositoryImpl implements PedidoRepository {
+public class PedidoRepositoryAdapter implements PedidoRepository {
 
     private final PedidoDao pedidoDAO;
 
-    public PedidoRepositoryImpl() {
+    public PedidoRepositoryAdapter() {
         this.pedidoDAO = new PedidoDao();
     }
 
