@@ -1,7 +1,7 @@
 package com.lucas.sistema.entrega.infraestrutura.persistence.cliente.dao;
 
-import com.lucas.sistema.entrega.infraestrutura.persistence.conexao.ConexaoFactory;
-import com.lucas.sistema.entrega.infraestrutura.persistence.conexao.exception.ConexaoDatabaseException;
+import com.lucas.sistema.entrega.infraestrutura.conexao.ConexaoFactory;
+import com.lucas.sistema.entrega.infraestrutura.conexao.exception.ConexaoDatabaseException;
 import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 
 import java.util.Optional;

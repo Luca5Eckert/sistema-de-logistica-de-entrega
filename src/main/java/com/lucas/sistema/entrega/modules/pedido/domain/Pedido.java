@@ -13,13 +13,13 @@ public class Pedido {
 
     private final LocalDateTime dataPedido;
 
-    private int volumeM3;
+    private double volumeM3;
 
-    private int pesoKg;
+    private double pesoKg;
 
     private PedidoStatus status;
 
-    public Pedido(long id, long clienteId, LocalDateTime dataPedido, int volumeM3, int pesoKg, PedidoStatus status) {
+    public Pedido(long id, long clienteId, LocalDateTime dataPedido, double volumeM3, double pesoKg, PedidoStatus status) {
         this.id = id;
         this.clienteId = clienteId;
         this.dataPedido = dataPedido;
@@ -40,7 +40,7 @@ public class Pedido {
         return dataPedido;
     }
 
-    public int getVolumeM3() {
+    public double getVolumeM3() {
         return volumeM3;
     }
 
@@ -48,7 +48,7 @@ public class Pedido {
         this.volumeM3 = volumeM3;
     }
 
-    public int getPesoKg() {
+    public double getPesoKg() {
         return pesoKg;
     }
 

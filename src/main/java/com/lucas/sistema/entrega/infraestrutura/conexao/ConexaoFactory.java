@@ -1,4 +1,4 @@
-package com.lucas.sistema.entrega.infraestrutura.persistence.conexao;
+package com.lucas.sistema.entrega.infraestrutura.conexao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

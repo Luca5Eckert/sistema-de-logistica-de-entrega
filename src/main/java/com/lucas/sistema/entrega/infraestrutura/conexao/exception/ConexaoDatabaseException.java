@@ -1,4 +1,4 @@
-package com.lucas.sistema.entrega.infraestrutura.persistence.conexao.exception;
+package com.lucas.sistema.entrega.infraestrutura.conexao.exception;
 
 public class ConexaoDatabaseException extends RuntimeException {
     public ConexaoDatabaseException(String message) {
