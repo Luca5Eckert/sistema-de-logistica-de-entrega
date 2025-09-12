@@ -1,0 +1,59 @@
+package com.lucas.sistema.entrega.infraestrutura.persistence.entrega.repository;
+
+import com.lucas.sistema.entrega.infraestrutura.persistence.entrega.dao.EntregaDao;
+import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
+import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
+import com.lucas.sistema.entrega.modules.entrega.domain.port.EntregaRepository;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+public class EntregaRepositoryAdapter implements EntregaRepository {
+
+    private final EntregaDao entregaDao;
+
+    public EntregaRepositoryAdapter(EntregaDao entregaDao) {
+        this.entregaDao = entregaDao;
+    }
+
+    @Override
+    public void adicionar(Entrega entrega) {
+        entregaDao.adicionar(entrega);
+    }
+
+    @Override
+    public Optional<Entrega> buscarPorId(long id) {
+        return entregaDao.buscarPorId(id);
+    }
+
+    @Override
+    public void save(Entrega entrega) {
+        entregaDao.save(entrega);
+    }
+
+    @Override
+    public Optional<List<Entrega>> pegarTodas() {
+        return entregaDao.pegarTodas();
+    }
+
+    @Override
+    public long pegarQuantidadeEntregaPorMotorista() {
+        return entregaDao.pegarQuantidadeEntregaPorMotorista();
+    }
+
+    @Override
+    public List<Cliente> pegarClientesComMaiorQuantidadeEntregas() {
+        return entregaDao.pegarClientesComMaiorQuantidadeEntregas();
+    }
+
+    @Override
+    public void excluirPorId(long id) {
+        entregaDao.excluirPorId(id);
+    }
+
+    @Override
+    public Map<String, Long> pegarQuantidadeEntregasPendentesPorCidade() {
+        return pegarQuantidadeEntregasPendentesPorCidade();
+    }
+}

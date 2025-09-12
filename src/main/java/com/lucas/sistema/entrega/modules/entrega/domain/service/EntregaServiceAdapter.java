@@ -72,7 +72,7 @@ public class EntregaServiceAdapter implements EntregaService {
     }
 
     @Override
-    public Map<String, Long> pegarQuantidadeEntregasPendentesPorEstado() {
+    public Map<String, Long> pegarQuantidadeEntregasPendentesPorCidade() {
         return entregaRepository.pegarQuantidadeEntregasPendentesPorCidade();
     }
 
