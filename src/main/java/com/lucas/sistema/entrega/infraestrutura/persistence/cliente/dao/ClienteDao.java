@@ -32,7 +32,17 @@ public class ClienteDao {
 
     // Busca um cliente por ID, retornando um Optional para lidar com a ausência do cliente.
     public Optional<Cliente> buscarPorId(long id) {
-        String sql = "SELECT id, nome, cpf_cnpj, endereco, cidade, estado FROM Cliente WHERE id = ?";
+        String sql = """
+                SELECT 
+                id,
+                nome,
+                cpf_cnpj, 
+                endereco, 
+                cidade, 
+                estado 
+                FROM Cliente 
+                WHERE id = ?
+                """;
         try (Connection conn = ConexaoFactory.toInstance();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -59,7 +69,14 @@ public class ClienteDao {
 
     // Verifica se há alguma entrega dependente de um pedido do cliente.
     public boolean buscarEntregaDependente(long id) {
-        String sql = "SELECT EXISTS (SELECT 1 FROM Entrega e JOIN Pedido p ON e.pedido_id = p.id WHERE p.cliente_id = ?)";
+        String sql = """
+                SELECT EXISTS 
+                (
+                SELECT 1 FROM Entrega e 
+                JOIN Pedido p ON e.pedido_id = p.id 
+                WHERE p.cliente_id = ?
+                )
+                """;
         try (Connection conn = ConexaoFactory.toInstance();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 

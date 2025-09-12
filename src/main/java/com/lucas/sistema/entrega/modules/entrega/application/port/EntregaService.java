@@ -5,6 +5,7 @@ import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
 import com.lucas.sistema.entrega.modules.entrega.domain.enumerator.EntregaStatus;
 
 import java.util.List;
+import java.util.Map;
 
 public interface EntregaService {
 
@@ -19,4 +20,6 @@ public interface EntregaService {
     List<Cliente> pegarClientesComMaiorQuantidadeEntregas();
 
     void excluirEntrega(long id);
+
+    Map<String, Long> pegarQuantidadeEntregasPendentesPorCidade();
 }

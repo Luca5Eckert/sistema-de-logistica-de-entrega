@@ -10,6 +10,7 @@ import com.lucas.sistema.entrega.modules.entrega.domain.exceptions.EntregaStatus
 import com.lucas.sistema.entrega.modules.entrega.domain.port.EntregaRepository;
 
 import java.util.List;
+import java.util.Map;
 
 public class EntregaServiceAdapter implements EntregaService {
 
@@ -68,6 +69,11 @@ public class EntregaServiceAdapter implements EntregaService {
         if(entrega.validarExclusao()) throw new EntregaExclusaoException("Entrega só pode ser excluida se for atrasada");
 
         entregaRepository.excluirPorId(id);
+    }
+
+    @Override
+    public Map<String, Long> pegarQuantidadeEntregasPendentesPorEstado() {
+        return entregaRepository.pegarQuantidadeEntregasPendentesPorCidade();
     }
 
 }

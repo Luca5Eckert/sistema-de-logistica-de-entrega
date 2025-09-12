@@ -4,6 +4,7 @@ import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface EntregaRepository {
@@ -30,4 +31,6 @@ public interface EntregaRepository {
     List<Cliente> pegarClientesComMaiorQuantidadeEntregas();
 
     void excluirPorId(long id);
+
+    Map<String, Long> pegarQuantidadeEntregasPendentesPorCidade();
 }

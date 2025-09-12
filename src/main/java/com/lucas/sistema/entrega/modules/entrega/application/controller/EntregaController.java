@@ -2,7 +2,6 @@ package com.lucas.sistema.entrega.modules.entrega.application.controller;
 
 import com.lucas.sistema.entrega.infraestrutura.persistence.cliente.mapper.ClienteMapper;
 import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse;
-import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAdicionarRequest;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAtualizarStatusRequest;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaExcluirRequest;
@@ -11,6 +10,7 @@ import com.lucas.sistema.entrega.modules.entrega.application.port.EntregaMapper;
 import com.lucas.sistema.entrega.modules.entrega.application.port.EntregaService;
 
 import java.util.List;
+import java.util.Map;
 
 public class EntregaController {
 
@@ -60,6 +60,10 @@ public class EntregaController {
 
         return listaClientes.stream().map(clienteMapper::toResponse).toList();
 
+    }
+
+    public Map<String, Long> pegarQuantidadeEntregasPendentesPorCidade(){
+        return entregaService.pegarQuantidadeEntregasPendentesPorCidade();
     }
 
 
