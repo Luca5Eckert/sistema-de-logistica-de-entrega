@@ -7,6 +7,8 @@ import com.lucas.sistema.entrega.modules.pedido.domain.exception.PedidoNullExcep
 import com.lucas.sistema.entrega.modules.pedido.domain.exception.PedidoValidacaoCancelamentoException;
 import com.lucas.sistema.entrega.modules.pedido.domain.port.PedidoRepository;
 
+import java.util.Map;
+
 public class PedidoServiceAdapter implements PedidoService {
 
     private final PedidoRepository pedidoRepository;
@@ -31,6 +33,11 @@ public class PedidoServiceAdapter implements PedidoService {
         pedidoRepository.salvar(pedido);
 
         return pedido;
+    }
+
+    @Override
+    public Map<String, Long> pegarQuantidadePedidosPendentesPorEstado() {
+        return pedidoRepository.pegarQuantidadePedidosPendentesPorEstado();
     }
 
     private void verificarPedidoNulo(Pedido pedido){

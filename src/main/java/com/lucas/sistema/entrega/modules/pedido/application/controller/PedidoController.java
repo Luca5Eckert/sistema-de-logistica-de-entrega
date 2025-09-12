@@ -6,6 +6,8 @@ import com.lucas.sistema.entrega.modules.pedido.application.dto.PedidoResponse;
 import com.lucas.sistema.entrega.modules.pedido.application.port.PedidoMapper;
 import com.lucas.sistema.entrega.modules.pedido.application.port.PedidoService;
 
+import java.util.Map;
+
 public class PedidoController {
 
     private final PedidoService pedidoService;
@@ -30,5 +32,9 @@ public class PedidoController {
         var pedido = pedidoService.cancelarPedido(idPedido);
 
         return pedidoMapper.toResponse(pedido);
+    }
+
+    public Map<String, Long> pegarQuantidadePedidosPendentesPorEstado(){
+        return pedidoService.pegarQuantidadePedidosPendentesPorEstado();
     }
 }

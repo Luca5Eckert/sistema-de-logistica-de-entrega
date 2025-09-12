@@ -2,6 +2,7 @@ package com.lucas.sistema.entrega.modules.pedido.domain.port;
 
 import com.lucas.sistema.entrega.modules.pedido.domain.Pedido;
 
+import java.util.Map;
 import java.util.Optional;
 
 public interface PedidoRepository {
@@ -11,4 +12,6 @@ public interface PedidoRepository {
     Optional<Pedido> buscar(long pedidoId);
 
     void salvar(Pedido pedido);
+
+    Map<String, Long> pegarQuantidadePedidosPendentesPorEstado();
 }
