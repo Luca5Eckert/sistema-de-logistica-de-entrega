@@ -14,6 +14,15 @@ public class Cliente {
 
     private String estado;
 
+    public Cliente(long id) {
+        this.id = id;
+        this.nome = null;
+        this.cpfCnpj = null;
+        this.endereco = null;
+        this.cidade = null;
+        this.estado = null;
+    }
+
     public long getId() {
         return id;
     }
