@@ -1,5 +1,8 @@
 package com.lucas.sistema.entrega.modules.cliente.domain;
 
+import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.ClienteException;
+import org.apache.commons.lang3.math.NumberUtils;
+
 public class Cliente {
 
     private final long id;
@@ -23,26 +26,26 @@ public class Cliente {
         this.estado = null;
     }
 
-    public long getId() {
-        return id;
-    }
-
     public Cliente(long id, String nome, String cpfCnpj, String endereco, String cidade, String estado) {
         this.id = id;
-        this.nome = nome;
-        this.cpfCnpj = cpfCnpj;
-        this.endereco = endereco;
-        this.cidade = cidade;
-        this.estado = estado;
+        setNome(nome);
+        setCpfCnpj(cpfCnpj);
+        setEndereco(endereco);
+        setCidade(cidade);
+        setEstado(estado);
     }
 
     public Cliente(String nome, String cpfCnpj, String endereco, String cidade, String estado) {
         this.id = -1;
-        this.nome = nome;
-        this.cpfCnpj = cpfCnpj;
-        this.endereco = endereco;
-        this.cidade = cidade;
-        this.estado = estado;
+        setNome(nome);
+        setCpfCnpj(cpfCnpj);
+        setEndereco(endereco);
+        setCidade(cidade);
+        setEstado(estado);
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getNome() {
@@ -50,6 +53,12 @@ public class Cliente {
     }
 
     public void setNome(String nome) {
+        if(nome.isBlank()){
+            throw new ClienteException("Nome não pode ser branco");
+        }
+        if(nome.length() > 20){
+            throw new ClienteException("Nome não pode ser maior que 20 letras");
+        }
         this.nome = nome;
     }
 
@@ -58,6 +67,16 @@ public class Cliente {
     }
 
     public void setCpfCnpj(String cpfCnpj) {
+        if(cpfCnpj.isBlank()){
+            throw new ClienteException("CPF/CNPJ não pode ser branco");
+        }
+        if(cpfCnpj.length() == 11 || cpfCnpj.length() == 14){
+            throw new ClienteException("CPF/CNPJ precisa ter 11 ou 14 números");
+        }
+        if (!NumberUtils.isCreatable(cpfCnpj)) {
+            throw new ClienteException("CPF/CNPJ precisa ser apenas digitos");
+        }
+
         this.cpfCnpj = cpfCnpj;
     }
 
@@ -66,6 +85,12 @@ public class Cliente {
     }
 
     public void setEndereco(String endereco) {
+        if(endereco.isBlank()){
+            throw new ClienteException("Endereço não pode ser branco");
+        }
+        if(endereco.length() > 50){
+            throw new ClienteException("Endereço não pode ser maior que 50");
+        }
         this.endereco = endereco;
     }
 
@@ -74,6 +99,12 @@ public class Cliente {
     }
 
     public void setCidade(String cidade) {
+        if(cidade.isBlank()){
+            throw new ClienteException("Cidade não pode ser branco");
+        }
+        if(cidade.length() > 30){
+            throw new ClienteException("Cidade não pode ser maior que 30");
+        }
         this.cidade = cidade;
     }
 
@@ -82,6 +113,12 @@ public class Cliente {
     }
 
     public void setEstado(String estado) {
+        if(estado.isBlank()){
+            throw new ClienteException("Estado não pode ser branco");
+        }
+        if(estado.length() > 30){
+            throw new ClienteException("Estado não pode ser maior que 30");
+        }
         this.estado = estado;
     }
 }
