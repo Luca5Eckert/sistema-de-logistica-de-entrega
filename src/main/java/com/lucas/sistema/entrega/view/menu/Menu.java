@@ -21,6 +21,9 @@ public abstract class Menu{
     }
 
     public void setProximoMenu(Menu proximoMenu) {
+        if(proximoMenu == null){
+            System.out.println("| ENCERRANDO SISTEMA |");
+        }
         this.proximoMenu = proximoMenu;
     }
 
