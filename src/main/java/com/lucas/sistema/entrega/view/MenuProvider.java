@@ -4,9 +4,9 @@ import com.lucas.sistema.entrega.view.menu.Menu;
 
 public class MenuProvider {
 
-    private Menu<?> menu;
+    private Menu menu;
 
-    public MenuProvider(Menu<?> menu) {
+    public MenuProvider(Menu menu) {
         this.menu = menu;
     }
 
@@ -17,11 +17,10 @@ public class MenuProvider {
     public void executarMenu() {
         try{
 
-            menu.chamarMenu();
             menu.executarMenu();
             menu = menu.devolverProximoMenu();
 
-        }catch (RuntimeException runtimeException){
+        } catch (RuntimeException runtimeException){
             System.out.println(runtimeException.getMessage());
         }
 

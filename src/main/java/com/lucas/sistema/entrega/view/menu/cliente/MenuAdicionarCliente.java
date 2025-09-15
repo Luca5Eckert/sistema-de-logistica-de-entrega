@@ -4,21 +4,29 @@ import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteAdiciona
 import com.lucas.sistema.entrega.view.port.ClienteController;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
-import com.lucas.sistema.entrega.view.port.ClienteDtoProvider;
 
-public class MenuAdicionarCliente extends Menu<ClienteAdicionarRequest> {
+public class MenuAdicionarCliente extends Menu {
 
     private final ClienteController clienteController;
-    private final ClienteDtoProvider clienteDtoProvider;
 
-    protected MenuAdicionarCliente(Leitor leitor, ClienteController clienteController, ClienteDtoProvider clienteDtoProvider) {
+    public MenuAdicionarCliente(Leitor leitor, ClienteController clienteController) {
         super(leitor);
         this.clienteController = clienteController;
-        this.clienteDtoProvider = clienteDtoProvider;
     }
 
     @Override
-    public void chamarMenu() {
+    public void executarMenu() {
+
+        var clienteAdicionarRequest = chamarMenu();
+
+        var clienteResponse = clienteController.adicionar(clienteAdicionarRequest);
+
+
+        setProximoMenu(this);
+
+    }
+
+    public ClienteAdicionarRequest chamarMenu() {
         System.out.println("------------------------------------------------------------------------------");
         System.out.println("                              ADICIONAR CLIENTE                               ");
         System.out.println("------------------------------------------------------------------------------");
@@ -29,6 +37,9 @@ public class MenuAdicionarCliente extends Menu<ClienteAdicionarRequest> {
         System.out.println(" CPF ou CNPJ: ");
         String cpfCnpj = getLeitor().nextLine();
 
+        System.out.println(" Endereço: ");
+        String endereco = getLeitor().nextLine();
+
         System.out.println(" Cidade: ");
         String cidade = getLeitor().nextLine();
 
@@ -37,17 +48,8 @@ public class MenuAdicionarCliente extends Menu<ClienteAdicionarRequest> {
 
         System.out.println("------------------------------------------------------------------------------");
 
-        setResposta(clienteDtoProvider.criarDtoCriarCliente(nome, cpfCnpj, cidade, estado));
+        return new ClienteAdicionarRequest(nome, cpfCnpj, endereco, cidade, estado);
 
     }
 
-    @Override
-    public void executarMenu() {
-        var clienteResponse = clienteController.adicionar(getResposta());
-    }
-
-    @Override
-    public Menu devolverProximoMenu() {
-        return null;
-    }
 }

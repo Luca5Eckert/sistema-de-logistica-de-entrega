@@ -1,12 +1,9 @@
 package com.lucas.sistema.entrega.modules.cliente.domain.service;
 
-import com.lucas.sistema.entrega.infraestrutura.persistence.cliente.mapper.ClienteMapper;
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteAdicionarRequest;
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse;
+import com.lucas.sistema.entrega.infraestrutura.validador.LocationType;
 import com.lucas.sistema.entrega.modules.cliente.application.port.ClienteService;
 import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.ClienteDependenciaException;
-import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.ClienteNullException;
 import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.localizacao.LocalizacaoCidadeInvalidaException;
 import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.localizacao.LocalizacaoEstadoInvalidaException;
 import com.lucas.sistema.entrega.modules.cliente.domain.port.ClienteRepository;
@@ -31,9 +28,9 @@ public class ClienteServiceAdapter implements ClienteService {
     }
 
     private void validarLocalizacao(String cidade, String estado) {
-        if(validadorLocalizacao.valida(cidade)) throw new LocalizacaoCidadeInvalidaException("Cidade não é valida");
+        if(!validadorLocalizacao.validarLocalizacao(LocationType.ESTADO, estado, null)) throw new LocalizacaoCidadeInvalidaException("Cidade não é valida");
 
-        if(validadorLocalizacao.valida(estado)) throw new LocalizacaoEstadoInvalidaException("Estado não é valido");
+        if(!validadorLocalizacao.validarLocalizacao(LocationType.CIDADE, cidade, estado)) throw new LocalizacaoEstadoInvalidaException("Estado não é valido");
 
     }
 

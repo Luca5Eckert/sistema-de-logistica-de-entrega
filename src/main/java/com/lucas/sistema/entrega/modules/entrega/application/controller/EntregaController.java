@@ -1,7 +1,7 @@
 package com.lucas.sistema.entrega.modules.entrega.application.controller;
 
-import com.lucas.sistema.entrega.infraestrutura.persistence.cliente.mapper.ClienteMapper;
 import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse;
+import com.lucas.sistema.entrega.modules.cliente.domain.port.ClienteMapper;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAdicionarRequest;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAtualizarStatusRequest;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaExcluirRequest;
