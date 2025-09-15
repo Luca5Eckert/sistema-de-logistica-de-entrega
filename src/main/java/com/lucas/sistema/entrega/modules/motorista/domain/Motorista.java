@@ -20,6 +20,13 @@ public class Motorista {
         this.cidadeBase = cidadeBase;
     }
 
+    public Motorista(String nome, String cnh, String veiculo, String cidadeBase) {
+        this.id = -1;
+        this.nome = nome;
+        this.cnh = cnh;
+        this.veiculo = veiculo;
+        this.cidadeBase = cidadeBase;
+    }
     public long getId() {
         return id;
     }

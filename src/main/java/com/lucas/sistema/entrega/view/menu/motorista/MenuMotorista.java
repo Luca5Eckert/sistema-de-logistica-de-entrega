@@ -1,13 +1,14 @@
-package com.lucas.sistema.entrega.view.menu.cliente;
+package com.lucas.sistema.entrega.view.menu.motorista;
 
 import com.lucas.sistema.entrega.infraestrutura.utils.beans.ClienteBeansUtil;
+import com.lucas.sistema.entrega.infraestrutura.utils.beans.MotoristaBeansUtil;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.menu.MenuGeral;
 
-public class MenuCliente extends Menu {
+public class MenuMotorista extends Menu {
 
-    public MenuCliente(Leitor leitor) {
+    public MenuMotorista(Leitor leitor) {
         super(leitor);
     }
 
@@ -16,7 +17,7 @@ public class MenuCliente extends Menu {
         String entrada = chamarMenu();
 
         Menu proximoMenu = switch(entrada.toUpperCase()){
-            case "1" -> new MenuAdicionarCliente(getLeitor(), ClienteBeansUtil.toInstanceController());
+            case "1" -> new MenuCadastrarMotorista(getLeitor(), MotoristaBeansUtil.toInstanceController());
             case "S" -> new MenuGeral(getLeitor());
             default -> this;
         };
@@ -27,11 +28,11 @@ public class MenuCliente extends Menu {
 
     private String chamarMenu() {
         System.out.println("------------------------------------------------------------------------------");
-        System.out.println("                                MENU CLIENTE                                  ");
+        System.out.println("                              MENU MOTORISTA                                  ");
         System.out.println("------------------------------------------------------------------------------");
         System.out.println(" 1- Adicionar");
         System.out.println(" 2- Excluir");
-        System.out.println(" 3- Clientes com maior volume entregue");
+        System.out.println(" 3- Entregas por motorista");
         System.out.println("\n S- Sair");
         return getLeitor().nextLine();
     }

@@ -6,12 +6,12 @@ import com.lucas.sistema.entrega.modules.motorista.application.dto.MotoristaResp
 import com.lucas.sistema.entrega.modules.motorista.application.port.MotoristaMapper;
 import com.lucas.sistema.entrega.modules.motorista.application.port.MotoristaService;
 
-public class MotoristaController {
+public class MotoristaControllerAdapter {
 
     private final MotoristaService motoristaService;
     private final MotoristaMapper motoristaMapper;
 
-    public MotoristaController(MotoristaService motoristaService, MotoristaMapper motoristaMapper) {
+    public MotoristaControllerAdapter(MotoristaService motoristaService, MotoristaMapper motoristaMapper) {
         this.motoristaService = motoristaService;
         this.motoristaMapper = motoristaMapper;
     }

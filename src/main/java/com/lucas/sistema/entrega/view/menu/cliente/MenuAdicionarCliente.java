@@ -28,6 +28,8 @@ public class MenuAdicionarCliente extends Menu {
 
         var clienteResponse = clienteController.adicionar(clienteAdicionarRequest);
 
+        System.out.println("Cliente Adicionado com sucesso");
+
         imprimir(clienteResponse.exibirDados());
 
         setProximoMenu(new MenuCliente(getLeitor()));

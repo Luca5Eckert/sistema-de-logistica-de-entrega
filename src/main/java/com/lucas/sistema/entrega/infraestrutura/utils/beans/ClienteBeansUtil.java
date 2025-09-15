@@ -1,4 +1,4 @@
-package com.lucas.sistema.entrega.infraestrutura.utils;
+package com.lucas.sistema.entrega.infraestrutura.utils.beans;
 
 import com.lucas.sistema.entrega.infraestrutura.persistence.cliente.dao.ClienteDao;
 import com.lucas.sistema.entrega.infraestrutura.persistence.cliente.mapper.ClienteMapperAdapter;

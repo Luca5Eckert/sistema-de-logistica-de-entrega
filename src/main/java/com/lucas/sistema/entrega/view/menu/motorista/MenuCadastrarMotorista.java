@@ -1,6 +1,6 @@
 package com.lucas.sistema.entrega.view.menu.motorista;
 
-import com.lucas.sistema.entrega.modules.motorista.application.controller.MotoristaController;
+import com.lucas.sistema.entrega.modules.motorista.application.controller.MotoristaControllerAdapter;
 import com.lucas.sistema.entrega.modules.motorista.application.dto.MotoristaAdicionarRequest;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
@@ -9,9 +9,9 @@ import static com.lucas.sistema.entrega.infraestrutura.utils.ConsoleUtil.imprimi
 
 public class MenuCadastrarMotorista extends Menu {
 
-    private final MotoristaController motoristaController;
+    private final MotoristaControllerAdapter motoristaController;
 
-    protected MenuCadastrarMotorista(Leitor leitor, MotoristaController motoristaController) {
+    protected MenuCadastrarMotorista(Leitor leitor, MotoristaControllerAdapter motoristaController) {
         super(leitor);
         this.motoristaController = motoristaController;
     }
@@ -21,6 +21,8 @@ public class MenuCadastrarMotorista extends Menu {
         var motorista = chamarMenu();
 
         var motoristaResponse = motoristaController.cadastrar(motorista);
+
+        System.out.println("Motorista Adicionado com sucesso");
 
         imprimir(motoristaResponse.exibirDados());
 
