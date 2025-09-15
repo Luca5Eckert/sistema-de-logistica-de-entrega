@@ -6,8 +6,8 @@ import com.lucas.sistema.entrega.modules.motorista.application.dto.MotoristaResp
 
 public interface MotoristaController {
 
-    public MotoristaResponse cadastrar(MotoristaAdicionarRequest motoristaAdicionarRequest);
+    MotoristaResponse cadastrar(MotoristaAdicionarRequest motoristaAdicionarRequest);
 
-    public void excluir(MotoristaDeletarRequest motoristaDeletarRequest);
+    void excluir(MotoristaDeletarRequest motoristaDeletarRequest);
 
 }

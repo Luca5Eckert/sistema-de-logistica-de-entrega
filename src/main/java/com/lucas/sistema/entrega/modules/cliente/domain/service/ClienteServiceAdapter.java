@@ -1,7 +1,6 @@
 package com.lucas.sistema.entrega.modules.cliente.domain.service;
 
 import com.lucas.sistema.entrega.infraestrutura.validador.LocationType;
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse;
 import com.lucas.sistema.entrega.modules.cliente.application.port.ClienteService;
 import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.ClienteDependenciaException;

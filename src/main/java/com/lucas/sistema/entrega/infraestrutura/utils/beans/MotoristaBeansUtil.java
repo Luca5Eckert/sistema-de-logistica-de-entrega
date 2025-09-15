@@ -4,8 +4,6 @@ package com.lucas.sistema.entrega.infraestrutura.utils.beans;
 import com.lucas.sistema.entrega.infraestrutura.persistence.motorista.dao.MotoristaDao;
 import com.lucas.sistema.entrega.infraestrutura.persistence.motorista.mapper.MotoristaMapperAdapter;
 import com.lucas.sistema.entrega.infraestrutura.persistence.motorista.repository.MotoristaRepositoryAdapter;
-import com.lucas.sistema.entrega.infraestrutura.validador.ValidadorLocalizacaoAdapter;
-import com.lucas.sistema.entrega.modules.cliente.domain.port.ValidadorLocalizacao;
 import com.lucas.sistema.entrega.modules.motorista.application.controller.MotoristaControllerAdapter;
 import com.lucas.sistema.entrega.modules.motorista.application.port.MotoristaMapper;
 import com.lucas.sistema.entrega.modules.motorista.application.port.MotoristaService;

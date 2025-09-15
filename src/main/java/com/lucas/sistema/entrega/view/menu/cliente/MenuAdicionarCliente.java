@@ -1,7 +1,6 @@
 package com.lucas.sistema.entrega.view.menu.cliente;
 
 import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteAdicionarRequest;
-import com.lucas.sistema.entrega.view.menu.MenuGeral;
 import com.lucas.sistema.entrega.view.port.ClienteController;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;

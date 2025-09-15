@@ -1,6 +1,5 @@
 package com.lucas.sistema.entrega.view.menu.motorista;
 
-import com.lucas.sistema.entrega.infraestrutura.utils.beans.ClienteBeansUtil;
 import com.lucas.sistema.entrega.infraestrutura.utils.beans.MotoristaBeansUtil;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;

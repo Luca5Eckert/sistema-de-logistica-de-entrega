@@ -4,8 +4,6 @@ import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.cliente.MenuCliente;
 import com.lucas.sistema.entrega.view.menu.motorista.MenuMotorista;
 
-import static com.lucas.sistema.entrega.infraestrutura.utils.ConsoleUtil.imprimir;
-
 public class MenuGeral extends Menu {
 
     public MenuGeral(Leitor leitor) {
