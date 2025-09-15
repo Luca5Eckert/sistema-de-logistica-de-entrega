@@ -14,7 +14,13 @@ public class ConexaoFactory {
     }
 
     public static void main(String[] args) throws SQLException {
-        toInstance();
+        Connection connection =  toInstance();
+
+        if(connection != null){
+            System.out.println("Conexão realizada com sucesso");
+            return;
+        }
+        System.out.println("Erro ao conectar no banco de dados");
     }
 
 

@@ -24,13 +24,13 @@ public class ClienteServiceAdapter implements ClienteService {
 
     @Override
     public void adicionar(Cliente cliente) {
-        validaLocalizacao(cliente.getCidade(), cliente.getEstado());
+        validarLocalizacao(cliente.getCidade(), cliente.getEstado());
 
         clienteRepository.adicionar(cliente);
 
     }
 
-    private void validaLocalizacao(String cidade, String estado) {
+    private void validarLocalizacao(String cidade, String estado) {
         if(validadorLocalizacao.valida(cidade)) throw new LocalizacaoCidadeInvalidaException("Cidade não é valida");
 
         if(validadorLocalizacao.valida(estado)) throw new LocalizacaoEstadoInvalidaException("Estado não é valido");

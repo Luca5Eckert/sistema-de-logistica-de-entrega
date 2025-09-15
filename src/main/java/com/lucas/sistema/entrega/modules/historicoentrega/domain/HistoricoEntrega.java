@@ -19,6 +19,13 @@ public class HistoricoEntrega {
         this.descricao = descricao;
     }
 
+    public HistoricoEntrega(long entregaId, LocalDateTime dataEvento, String descricao) {
+        this.id = -1;
+        this.entregaId = entregaId;
+        this.dataEvento = dataEvento;
+        this.descricao = descricao;
+    }
+
     public long getId() {
         return id;
     }
