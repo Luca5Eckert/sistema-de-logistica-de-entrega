@@ -5,6 +5,8 @@ import com.lucas.sistema.entrega.view.port.ClienteController;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 
+import static com.lucas.sistema.entrega.infraestrutura.utils.ConsoleUtil.imprimir;
+
 public class MenuAdicionarCliente extends Menu {
 
     private final ClienteController clienteController;
@@ -21,6 +23,7 @@ public class MenuAdicionarCliente extends Menu {
 
         var clienteResponse = clienteController.adicionar(clienteAdicionarRequest);
 
+        imprimir(clienteResponse.exibirDados());
 
         setProximoMenu(this);
 
@@ -43,7 +46,7 @@ public class MenuAdicionarCliente extends Menu {
         System.out.println(" Cidade: ");
         String cidade = getLeitor().nextLine();
 
-        System.out.println(" Estado: ");
+        System.out.println(" Estado ( em sigla, ex: São Paulo = SP ): ");
         String estado = getLeitor().nextLine();
 
         System.out.println("------------------------------------------------------------------------------");
