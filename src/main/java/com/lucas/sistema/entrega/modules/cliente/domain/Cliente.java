@@ -70,7 +70,7 @@ public class Cliente {
         if(cpfCnpj.isBlank()){
             throw new ClienteException("CPF/CNPJ não pode ser branco");
         }
-        if(cpfCnpj.length() == 11 || cpfCnpj.length() == 14){
+        if(!(cpfCnpj.length() == 11 || cpfCnpj.length() == 14)){
             throw new ClienteException("CPF/CNPJ precisa ter 11 ou 14 números");
         }
         if (!NumberUtils.isCreatable(cpfCnpj)) {

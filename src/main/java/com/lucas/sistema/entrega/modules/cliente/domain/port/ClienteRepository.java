@@ -2,6 +2,7 @@ package com.lucas.sistema.entrega.modules.cliente.domain.port;
 
 import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ClienteRepository {
@@ -14,4 +15,6 @@ public interface ClienteRepository {
     boolean buscarPedidoDependente(long id);
 
     void excluirPorId(long id);
+
+    List<Cliente> listar();
 }

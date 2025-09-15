@@ -4,6 +4,8 @@ import com.lucas.sistema.entrega.infraestrutura.conexao.ConexaoFactory;
 import com.lucas.sistema.entrega.infraestrutura.conexao.exception.ConexaoDatabaseException;
 import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import java.sql.Connection;
@@ -127,4 +129,33 @@ public class ClienteDao {
             throw new ConexaoDatabaseException("Erro ao conectar ao banco dados");
         }
     }
+
+    public List<Cliente> listar() {
+        String sql = """
+            SELECT id, nome, cpf_cnpj, endereco, cidade, estado
+            FROM Cliente;
+            """;
+        List<Cliente> clientes = new ArrayList<>();
+        try (Connection conn = ConexaoFactory.toInstance();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                long id = rs.getLong("id");
+                String nome = rs.getString("nome");
+                String cpfCnpj = rs.getString("cpf_cnpj");
+                String endereco = rs.getString("endereco");
+                String cidade = rs.getString("cidade");
+                String estado = rs.getString("estado");
+
+                Cliente cliente = new Cliente(id, nome, cpfCnpj, endereco, cidade, estado);
+                clientes.add(cliente);
+            }
+
+        } catch (SQLException e) {
+            throw new ConexaoDatabaseException("Erro ao conectar ao banco dados");
+        }
+        return clientes;
+    }
+
 }

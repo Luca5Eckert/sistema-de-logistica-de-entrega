@@ -8,6 +8,8 @@ import com.lucas.sistema.entrega.modules.cliente.application.port.ClienteService
 import com.lucas.sistema.entrega.modules.cliente.domain.port.ClienteMapper;
 import com.lucas.sistema.entrega.view.port.ClienteController;
 
+import java.util.List;
+
 public class ClienteControllerAdapter implements ClienteController {
 
     private final ClienteService clienteService;
@@ -32,5 +34,12 @@ public class ClienteControllerAdapter implements ClienteController {
     public void excluir(ClienteExcluirRequest clienteExcluirRequest){
         clienteService.excluir(clienteExcluirRequest.id());
     }
+
+    @Override
+    public List<ClienteResponse> listar() {
+        var clientes = clienteService.listar();
+        return clientes.stream().map(clienteMapper::toResponse).toList();
+    }
+
 
 }

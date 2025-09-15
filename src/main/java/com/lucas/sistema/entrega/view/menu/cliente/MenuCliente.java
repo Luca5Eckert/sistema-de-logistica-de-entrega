@@ -17,6 +17,7 @@ public class MenuCliente extends Menu {
 
         Menu proximoMenu = switch(entrada.toUpperCase()){
             case "1" -> new MenuAdicionarCliente(getLeitor(), ClienteBeansUtil.toInstanceController());
+            case "2" -> new MenuListarCliente(getLeitor(), ClienteBeansUtil.toInstanceController());
             case "S" -> new MenuGeral(getLeitor());
             default -> this;
         };
@@ -30,8 +31,9 @@ public class MenuCliente extends Menu {
         System.out.println("                                MENU CLIENTE                                  ");
         System.out.println("------------------------------------------------------------------------------");
         System.out.println(" 1- Adicionar");
-        System.out.println(" 2- Excluir");
-        System.out.println(" 3- Clientes com maior volume entregue");
+        System.out.println(" 2- Listar Clientes");
+        System.out.println(" 3- Excluir");
+        System.out.println(" 4- Clientes com maior volume entregue");
         System.out.println("\n S- Sair");
         return getLeitor().nextLine();
     }

@@ -31,10 +31,13 @@ public class MenuMotorista extends Menu {
         System.out.println("                              MENU MOTORISTA                                  ");
         System.out.println("------------------------------------------------------------------------------");
         System.out.println(" 1- Adicionar");
-        System.out.println(" 2- Excluir");
-        System.out.println(" 3- Entregas por motorista");
+        System.out.println(" 2- Listar Motoristas");
+        System.out.println(" 3- Excluir");
+        System.out.println(" 4- Entregas por motorista");
         System.out.println("\n S- Sair");
+
         return getLeitor().nextLine();
+
     }
 
 }

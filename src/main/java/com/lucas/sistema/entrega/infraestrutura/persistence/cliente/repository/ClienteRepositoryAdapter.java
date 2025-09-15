@@ -4,6 +4,7 @@ import com.lucas.sistema.entrega.infraestrutura.persistence.cliente.dao.ClienteD
 import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.cliente.domain.port.ClienteRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ClienteRepositoryAdapter implements ClienteRepository {
@@ -37,5 +38,10 @@ public class ClienteRepositoryAdapter implements ClienteRepository {
     @Override
     public void excluirPorId(long id) {
         clienteDao.excluirPorId(id);
+    }
+
+    @Override
+    public List<Cliente> listar() {
+        return clienteDao.listar();
     }
 }

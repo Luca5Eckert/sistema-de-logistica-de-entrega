@@ -4,9 +4,13 @@ import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteAdiciona
 import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteExcluirRequest;
 import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse;
 
+import java.util.List;
+
 public interface ClienteController {
     ClienteResponse adicionar(ClienteAdicionarRequest clienteAdicionarRequest);
 
     void excluir(ClienteExcluirRequest clienteExcluirRequest);
+
+    List<ClienteResponse> listar();
 
 }
