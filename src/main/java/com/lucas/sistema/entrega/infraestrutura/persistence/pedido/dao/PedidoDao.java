@@ -28,7 +28,7 @@ public class PedidoDao {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setLong(1, pedido.getClienteId());
-            ps.setDate(2, Date.valueOf(pedido.getDataPedido().format(DateTimeFormatter.ISO_LOCAL_TIME)));
+            ps.setTimestamp(2, java.sql.Timestamp.valueOf(pedido.getDataPedido()));
             ps.setDouble(3, pedido.getVolumeM3());
             ps.setDouble(4, pedido.getPesoKg());
             ps.setString(5, pedido.getStatus().name());

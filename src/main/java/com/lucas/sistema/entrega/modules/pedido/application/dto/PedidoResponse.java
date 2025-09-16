@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public record PedidoResponse(long id, long clienteId, LocalDateTime dataPedido, double volumeM3, double pesoKg, PedidoStatus pedidoStatus) {
 
     public String exibirDados() {
-        return "| Cliente Id: " + clienteId +
+        return " | Cliente Id: " + clienteId +
                 "\n | Data Pedido: " + dataPedido +
                 "\n | Volume em m³: " + volumeM3 +
                 "\n | Peso em kg: " + pesoKg

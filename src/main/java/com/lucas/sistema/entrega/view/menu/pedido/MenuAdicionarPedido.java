@@ -31,7 +31,7 @@ public class MenuAdicionarPedido extends Menu {
 
         System.out.println(pedidoResponse.exibirDados());
 
-        System.out.println("| Pedido adicionado com sucesso");
+        System.out.println(" Pedido adicionado com sucesso");
 
         setProximoMenu(new MenuGeral(getLeitor()));
 
