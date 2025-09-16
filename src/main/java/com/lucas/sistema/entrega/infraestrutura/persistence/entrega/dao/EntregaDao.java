@@ -5,7 +5,6 @@ import com.lucas.sistema.entrega.infraestrutura.conexao.exception.ConexaoDatabas
 import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
 import com.lucas.sistema.entrega.modules.entrega.domain.enumerator.EntregaStatus;
-import com.lucas.sistema.entrega.modules.entrega.domain.port.EntregaRepository;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -19,9 +18,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class EntregaDao implements EntregaRepository {
+public class EntregaDao {
 
-    @Override
     public void adicionar(Entrega entrega) {
         String sql = """
             INSERT INTO Entrega (pedido_id, motorista_id, data_saida, data_entrega, status)
@@ -42,7 +40,6 @@ public class EntregaDao implements EntregaRepository {
         }
     }
 
-    @Override
     public Optional<Entrega> buscarPorId(long id) {
         String sql = """
             SELECT id, pedido_id, motorista_id, data_saida, data_entrega, status
@@ -72,7 +69,6 @@ public class EntregaDao implements EntregaRepository {
         return Optional.empty();
     }
 
-    @Override
     public void save(Entrega entrega) {
         String sql = """
             UPDATE Entrega
@@ -95,7 +91,6 @@ public class EntregaDao implements EntregaRepository {
         }
     }
 
-    @Override
     public Optional<List<Entrega>> pegarTodas() {
         String sql = """
             SELECT id, pedido_id, motorista_id, data_saida, data_entrega, status
@@ -124,14 +119,17 @@ public class EntregaDao implements EntregaRepository {
         return Optional.of(entregas);
     }
 
-    @Override
-    public long pegarQuantidadeEntregaPorMotorista() {
+    public long pegarQuantidadeEntregaPorMotorista(long idMotorista) {
         String sql = """
-            SELECT COUNT(*) FROM Entrega;
+            SELECT COUNT(*) FROM Entrega 
+            WHERE motorista_id = ?;
             """;
         try (Connection conn = ConexaoFactory.toInstance();
-             PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+             PreparedStatement ps = conn.prepareStatement(sql)){
+
+             ps.setLong(1, idMotorista);
+
+             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 return rs.getLong(1);
@@ -140,10 +138,9 @@ public class EntregaDao implements EntregaRepository {
         } catch (SQLException e) {
             throw new ConexaoDatabaseException("Erro ao conectar ao banco dados");
         }
-        return 0;
+        return -1;
     }
 
-    @Override
     public List<Cliente> pegarClientesComMaiorQuantidadeEntregas() {
         String sql = """
             SELECT
@@ -183,7 +180,6 @@ public class EntregaDao implements EntregaRepository {
         return clientes;
     }
 
-    @Override
     public void excluirPorId(long id) {
         String sql = """
             DELETE FROM Entrega
@@ -200,7 +196,6 @@ public class EntregaDao implements EntregaRepository {
         }
     }
 
-    @Override
     public Map<String, Long> pegarQuantidadeEntregasPendentesPorCidade() {
         String sql = """
             SELECT

@@ -38,8 +38,8 @@ public class EntregaRepositoryAdapter implements EntregaRepository {
     }
 
     @Override
-    public long pegarQuantidadeEntregaPorMotorista() {
-        return entregaDao.pegarQuantidadeEntregaPorMotorista();
+    public long pegarQuantidadeEntregaPorMotorista(long idMotorista) {
+        return entregaDao.pegarQuantidadeEntregaPorMotorista(idMotorista);
     }
 
     @Override

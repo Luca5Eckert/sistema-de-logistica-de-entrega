@@ -13,4 +13,6 @@ public interface MotoristaController {
     void excluir(MotoristaDeletarRequest motoristaDeletarRequest);
 
     List<MotoristaResponse> pegarMotoristas();
+
+    MotoristaResponse buscarPeloID(long id);
 }

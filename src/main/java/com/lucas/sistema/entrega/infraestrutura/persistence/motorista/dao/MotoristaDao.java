@@ -133,4 +133,28 @@ public class MotoristaDao {
         }
     }
 
+    public Motorista buscarPeloId(long id) {
+        String sql = "SELECT id, nome, cnh, veiculo, cidade_base FROM Motorista WHERE id = ?;";
+        try (Connection conn = ConexaoFactory.toInstance();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setLong(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new Motorista(
+                            rs.getLong("id"),
+                            rs.getString("nome"),
+                            rs.getString("cnh"),
+                            rs.getString("veiculo"),
+                            rs.getString("cidade_base")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            throw new ConexaoDatabaseException("Erro ao buscar motorista pelo ID.");
+        }
+        return null;
+    }
+
 }

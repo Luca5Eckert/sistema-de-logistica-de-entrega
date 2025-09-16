@@ -11,4 +11,6 @@ public interface MotoristaService {
     void excluirPorId(long id);
 
     List<Motorista> pegarMotoristas();
+
+    Motorista buscarPeloId(long id);
 }

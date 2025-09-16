@@ -39,4 +39,10 @@ public class MotoristaControllerAdapter implements MotoristaController {
         return motoristas.stream().map(motoristaMapper::toResponse).toList();
     }
 
+    @Override
+    public MotoristaResponse buscarPeloID(long id) {
+        var motorista = motoristaService.buscarPeloId(id);
+        return motoristaMapper.toResponse(motorista);
+    }
+
 }

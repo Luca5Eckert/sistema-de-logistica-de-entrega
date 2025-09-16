@@ -40,4 +40,9 @@ public class MotoristaServiceAdapter implements MotoristaService {
     public List<Motorista> pegarMotoristas() {
         return motoristaRepository.pegarMotoristas();
     }
+
+    @Override
+    public Motorista buscarPeloId(long id) {
+        return motoristaRepository.buscarPeloId(id);
+    }
 }

@@ -44,4 +44,9 @@ public class MotoristaRepositoryAdapter implements MotoristaRepository {
     public List<Motorista> pegarMotoristas() {
         return motoristaDao.pegarMotoristas();
     }
+
+    @Override
+    public Motorista buscarPeloId(long id) {
+        return motoristaDao.buscarPeloId(id);
+    }
 }

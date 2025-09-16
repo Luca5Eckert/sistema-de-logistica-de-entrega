@@ -17,7 +17,7 @@ public interface EntregaRepository {
 
     Optional<List<Entrega>> pegarTodas();
 
-    long pegarQuantidadeEntregaPorMotorista();
+    long pegarQuantidadeEntregaPorMotorista(long idMotorista);
 
 
     /**

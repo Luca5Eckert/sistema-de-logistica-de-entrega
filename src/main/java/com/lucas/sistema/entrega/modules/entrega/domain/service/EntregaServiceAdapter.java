@@ -64,7 +64,7 @@ public class EntregaServiceAdapter implements EntregaService {
 
     @Override
     public long pegarQuantidadeEntregasPorMotorista(long idMotorista) {
-        return entregaRepository.pegarQuantidadeEntregaPorMotorista();
+        return entregaRepository.pegarQuantidadeEntregaPorMotorista(idMotorista);
     }
 
     @Override
