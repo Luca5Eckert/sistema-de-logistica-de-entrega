@@ -10,4 +10,6 @@ public interface ClienteService {
     void excluir(long id);
 
     List<Cliente> listar();
+
+    Cliente buscarPeloId(long id);
 }

@@ -4,7 +4,7 @@ public record ClienteResponse(long id, String nome, String cpfCnpj, String ender
 
     @Override
     public String toString() {
-        return "| Nome: " + nome + " | CPF/CNPJ: " + cpfCnpj + " | Endereço: " + endereco + " | Cidade: " + cidade + " | Estado: "  + estado;
+        return "| Id: " + id + " | Nome: " + nome + " | CPF/CNPJ: " + cpfCnpj + " | Endereço: " + endereco + " | Cidade: " + cidade + " | Estado: "  + estado;
     }
 
     public String exibirDados(){

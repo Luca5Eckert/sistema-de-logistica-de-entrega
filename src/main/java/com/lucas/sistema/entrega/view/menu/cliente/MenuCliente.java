@@ -18,6 +18,7 @@ public class MenuCliente extends Menu {
         Menu proximoMenu = switch(entrada.toUpperCase()){
             case "1" -> new MenuAdicionarCliente(getLeitor(), ClienteBeansUtil.toInstanceController());
             case "2" -> new MenuListarCliente(getLeitor(), ClienteBeansUtil.toInstanceController());
+            case "3" -> new MenuExcluirCliente(getLeitor(), ClienteBeansUtil.toInstanceController());
             case "S" -> new MenuGeral(getLeitor());
             default -> this;
         };

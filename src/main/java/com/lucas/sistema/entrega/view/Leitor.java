@@ -16,7 +16,9 @@ public class Leitor {
 
     public int nextInt(){
         try{
-            return scanner.nextInt();
+            int valor = scanner.nextInt();
+            nextLine();
+            return valor;
         } catch (RuntimeException e) {
             throw new RuntimeException(imprimirMensagemErro());
         }
@@ -24,7 +26,9 @@ public class Leitor {
 
     public double nextDouble(){
         try{
-            return scanner.nextDouble();
+            double valor = scanner.nextDouble();
+            nextLine();
+            return valor;
         } catch (RuntimeException e) {
             throw new RuntimeException(imprimirMensagemErro());
         }
@@ -32,7 +36,9 @@ public class Leitor {
 
     public long nextLong() {
         try{
-            return scanner.nextLong();
+            long valor = scanner.nextLong();
+            nextLine();
+            return valor;
         } catch (RuntimeException e) {
             throw new RuntimeException(imprimirMensagemErro());
         }

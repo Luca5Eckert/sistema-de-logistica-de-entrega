@@ -13,4 +13,5 @@ public interface ClienteController {
 
     List<ClienteResponse> listar();
 
+    ClienteResponse buscarPeloID(long id);
 }

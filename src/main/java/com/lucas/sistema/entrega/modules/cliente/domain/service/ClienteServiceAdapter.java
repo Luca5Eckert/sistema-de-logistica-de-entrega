@@ -4,6 +4,7 @@ import com.lucas.sistema.entrega.infraestrutura.validador.LocationType;
 import com.lucas.sistema.entrega.modules.cliente.application.port.ClienteService;
 import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.ClienteDependenciaException;
+import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.ClienteNullException;
 import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.localizacao.LocalizacaoCidadeInvalidaException;
 import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.localizacao.LocalizacaoEstadoInvalidaException;
 import com.lucas.sistema.entrega.modules.cliente.domain.port.ClienteRepository;
@@ -49,6 +50,11 @@ public class ClienteServiceAdapter implements ClienteService {
     @Override
     public List<Cliente> listar() {
         return clienteRepository.listar();
+    }
+
+    @Override
+    public Cliente buscarPeloId(long id) {
+        return clienteRepository.buscarPorId(id).orElseThrow(() -> new ClienteNullException("Cliente não encontrado com id " + id));
     }
 
 }

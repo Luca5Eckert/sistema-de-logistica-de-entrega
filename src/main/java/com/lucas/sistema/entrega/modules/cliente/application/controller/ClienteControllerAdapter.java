@@ -41,5 +41,11 @@ public class ClienteControllerAdapter implements ClienteController {
         return clientes.stream().map(clienteMapper::toResponse).toList();
     }
 
+    @Override
+    public ClienteResponse buscarPeloID(long id) {
+        var cliente = clienteService.buscarPeloId(id);
+        return clienteMapper.toResponse(cliente);
+    }
+
 
 }
