@@ -33,8 +33,8 @@ public class EntregaServiceAdapter implements EntregaService {
             throw new EntregaNullException("A entrega não pode ser nula");
         }
 
-        if(motoristaRepository.existePorId(entrega.getMotoristaId())) throw new EntregaException(" Não encontrado motorista com id: " + entrega.getMotoristaId());
-        if(pedidoRepository.existePorId(entrega.getPedidoId())) throw new EntregaException(" Não encontrado pedido com id: " + entrega.getPedidoId());
+        if(!motoristaRepository.existePorId(entrega.getMotoristaId())) throw new EntregaException(" Não encontrado motorista com id: " + entrega.getMotoristaId());
+        if(!pedidoRepository.existePorId(entrega.getPedidoId())) throw new EntregaException(" Não encontrado pedido com id: " + entrega.getPedidoId());
 
         entregaRepository.adicionar(entrega);
 
