@@ -23,4 +23,7 @@ public class MotoristaBeansUtil {
         return MOTORISTA_CONTROLLER;
     }
 
+    public static MotoristaRepository toInstanceRepository() {
+        return MOTORISTA_REPOSITORY;
+    }
 }

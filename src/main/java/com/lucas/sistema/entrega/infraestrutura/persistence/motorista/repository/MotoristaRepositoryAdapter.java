@@ -32,4 +32,9 @@ public class MotoristaRepositoryAdapter implements MotoristaRepository {
     public boolean buscarPedidoDependente(long id) {
         return motoristaDao.buscarPedidoDependente(id);
     }
+
+    @Override
+    public boolean existePorId(long motoristaId) {
+        return motoristaDao.existePorId(motoristaId);
+    }
 }

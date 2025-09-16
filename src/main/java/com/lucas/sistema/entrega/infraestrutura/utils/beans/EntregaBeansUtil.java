@@ -13,7 +13,7 @@ public class EntregaBeansUtil {
 
     private final static EntregaDao ENTREGA_DAO = new EntregaDao();
     private final static EntregaRepository ENTREGA_REPOSITORY = new EntregaRepositoryAdapter(ENTREGA_DAO);
-    private final static EntregaService ENTREGA_SERVICE = new EntregaServiceAdapter(ENTREGA_REPOSITORY);
+    private final static EntregaService ENTREGA_SERVICE = new EntregaServiceAdapter(ENTREGA_REPOSITORY, MotoristaBeansUtil.toInstanceRepository(), PedidoBeansUtil.toInstanceRepository());
     private final static EntregaMapper ENTREGA_MAPPER = new EntregaMapperAdapter();
     private final static EntregaControllerAdapter ENTREGA_CONTROLLER = new EntregaControllerAdapter(ENTREGA_SERVICE, ENTREGA_MAPPER, ClienteBeansUtil.toInstanceMapper());
 

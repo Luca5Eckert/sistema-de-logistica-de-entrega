@@ -36,6 +36,6 @@ public class PedidoRepositoryAdapter implements PedidoRepository {
 
     @Override
     public boolean existePorId(long pedidoId) {
-        return false;
+        return buscar(pedidoId).isPresent();
     }
 }

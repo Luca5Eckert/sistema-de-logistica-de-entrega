@@ -92,4 +92,19 @@ public class MotoristaDao {
         return false;
     }
 
+    public boolean existePorId(long motoristaId) {
+        String sql = "SELECT COUNT(1) FROM Motorista WHERE id = ?;";
+        try (Connection conn = ConexaoFactory.toInstance();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setLong(1, motoristaId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            throw new ConexaoDatabaseException("Erro ao conectar ao banco de dados ao verificar a existência do motorista.");
+        }
+        return false;
+    }
 }

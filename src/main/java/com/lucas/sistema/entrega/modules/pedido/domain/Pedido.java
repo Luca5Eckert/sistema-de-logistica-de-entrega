@@ -39,6 +39,8 @@ public class Pedido {
 
     public Pedido(long id) {
         this.id = id;
+        this.clienteId = -1;
+        this.dataPedido = null;
     }
 
 

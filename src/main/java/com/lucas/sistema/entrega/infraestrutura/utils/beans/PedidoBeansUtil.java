@@ -3,6 +3,7 @@ package com.lucas.sistema.entrega.infraestrutura.utils.beans;
 import com.lucas.sistema.entrega.infraestrutura.persistence.pedido.dao.PedidoDao;
 import com.lucas.sistema.entrega.infraestrutura.persistence.pedido.mapper.PedidoMapperAdapter;
 import com.lucas.sistema.entrega.infraestrutura.persistence.pedido.repository.PedidoRepositoryAdapter;
+import com.lucas.sistema.entrega.modules.motorista.domain.port.MotoristaRepository;
 import com.lucas.sistema.entrega.modules.pedido.application.controller.PedidoControllerAdapter;
 import com.lucas.sistema.entrega.modules.pedido.application.port.PedidoMapper;
 import com.lucas.sistema.entrega.modules.pedido.application.port.PedidoService;
@@ -21,4 +22,8 @@ public class PedidoBeansUtil {
         return PEDIDO_CONTROLLER;
     }
 
+
+    public static PedidoRepository toInstanceRepository() {
+        return PEDIDO_REPOSITORY;
+    }
 }
