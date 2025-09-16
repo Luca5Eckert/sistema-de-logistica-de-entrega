@@ -6,13 +6,10 @@ import com.lucas.sistema.entrega.modules.pedido.domain.Pedido;
 import com.lucas.sistema.entrega.modules.pedido.domain.enumerator.PedidoStatus;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -54,7 +51,8 @@ public class PedidoDao {
                 if (rs.next()) {
                     long id = rs.getLong("id");
                     long clienteId = rs.getLong("cliente_id");
-                    LocalDateTime dataPedido = rs.getDate("data_pedido").toLocalDate().atStartOfDay();
+                    // CORREÇÃO: Usar getTimestamp para ler um valor de data e hora
+                    LocalDateTime dataPedido = rs.getTimestamp("data_pedido").toLocalDateTime();
                     double volumeM3 = rs.getDouble("volume_m3");
                     double pesoKg = rs.getDouble("peso_kg");
                     PedidoStatus status = PedidoStatus.valueOf(rs.getString("status"));
@@ -79,7 +77,8 @@ public class PedidoDao {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setLong(1, pedido.getClienteId());
-            ps.setDate(2, Date.valueOf(pedido.getDataPedido().format(DateTimeFormatter.ISO_LOCAL_TIME)));
+            // CORREÇÃO: Usar setTimestamp para salvar um LocalDateTime
+            ps.setTimestamp(2, java.sql.Timestamp.valueOf(pedido.getDataPedido()));
             ps.setDouble(3, pedido.getVolumeM3());
             ps.setDouble(4, pedido.getPesoKg());
             ps.setString(5, pedido.getStatus().name());
