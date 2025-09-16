@@ -2,6 +2,7 @@ package com.lucas.sistema.entrega.view.menu;
 
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.cliente.MenuCliente;
+import com.lucas.sistema.entrega.view.menu.entrega.MenuEntrega;
 import com.lucas.sistema.entrega.view.menu.motorista.MenuMotorista;
 
 public class MenuGeral extends Menu {
@@ -18,6 +19,7 @@ public class MenuGeral extends Menu {
         Menu proximoMenu = switch(escolha.toUpperCase()){
             case "1" -> new MenuCliente(getLeitor());
             case "2" -> new MenuMotorista(getLeitor());
+            case "3" -> new MenuEntrega(getLeitor());
             case "S" -> null;
             default -> this;
         };

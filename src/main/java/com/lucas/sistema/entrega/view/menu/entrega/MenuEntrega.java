@@ -4,10 +4,12 @@ import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.menu.MenuGeral;
 
+import static com.lucas.sistema.entrega.infraestrutura.utils.beans.EntregaBeansUtil.toInstanceController;
+
 public class MenuEntrega extends Menu {
 
 
-    protected MenuEntrega(Leitor leitor) {
+    public MenuEntrega(Leitor leitor) {
         super(leitor);
     }
 
@@ -16,6 +18,8 @@ public class MenuEntrega extends Menu {
         String entrada = chamarMenu();
 
         Menu menu = switch(entrada.toUpperCase()){
+            case "1" -> new MenuAdicionarEntrega(getLeitor(), toInstanceController());
+            case "2" -> new MenuAlterarStatusEntrega(getLeitor(), toInstanceController());
             case "S" -> new MenuGeral(getLeitor());
             default -> this;
         };
