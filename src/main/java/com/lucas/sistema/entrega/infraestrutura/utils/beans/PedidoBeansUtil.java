@@ -14,7 +14,7 @@ public class PedidoBeansUtil {
 
     private final static PedidoDao PEDIDO_DAO = new PedidoDao();
     private final static PedidoRepository PEDIDO_REPOSITORY = new PedidoRepositoryAdapter(PEDIDO_DAO);
-    private final static PedidoService PEDIDO_SERVICE = new PedidoServiceAdapter(PEDIDO_REPOSITORY);
+    private final static PedidoService PEDIDO_SERVICE = new PedidoServiceAdapter(PEDIDO_REPOSITORY, ClienteBeansUtil.toInstanceRepository());
     private final static PedidoMapper PEDIDO_MAPPER = new PedidoMapperAdapter();
     private final static PedidoControllerAdapter PEDIDO_CONTROLLER = new PedidoControllerAdapter(PEDIDO_SERVICE, PEDIDO_MAPPER);
 

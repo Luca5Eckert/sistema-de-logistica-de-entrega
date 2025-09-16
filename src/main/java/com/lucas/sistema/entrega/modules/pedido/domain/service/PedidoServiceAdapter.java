@@ -1,5 +1,7 @@
 package com.lucas.sistema.entrega.modules.pedido.domain.service;
 
+import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.ClienteNullException;
+import com.lucas.sistema.entrega.modules.cliente.domain.port.ClienteRepository;
 import com.lucas.sistema.entrega.modules.pedido.application.port.PedidoService;
 import com.lucas.sistema.entrega.modules.pedido.domain.Pedido;
 import com.lucas.sistema.entrega.modules.pedido.domain.enumerator.PedidoStatus;
@@ -12,14 +14,18 @@ import java.util.Map;
 public class PedidoServiceAdapter implements PedidoService {
 
     private final PedidoRepository pedidoRepository;
+    private final ClienteRepository clienteRepository;
 
-    public PedidoServiceAdapter(PedidoRepository pedidoRepository) {
+    public PedidoServiceAdapter(PedidoRepository pedidoRepository, ClienteRepository clienteRepository) {
         this.pedidoRepository = pedidoRepository;
+        this.clienteRepository = clienteRepository;
     }
 
     @Override
     public void adicionarPedido(Pedido pedido) {
         verificarPedidoNulo(pedido);
+
+        if(clienteRepository.buscarPorId(pedido.getClienteId()).isEmpty()) throw new ClienteNullException(" Cliente não encontrado com id: " + pedido.getClienteId());
 
         pedidoRepository.adicionar(pedido);
     }

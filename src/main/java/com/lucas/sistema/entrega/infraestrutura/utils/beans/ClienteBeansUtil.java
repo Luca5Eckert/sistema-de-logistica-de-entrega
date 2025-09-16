@@ -29,4 +29,8 @@ public class ClienteBeansUtil {
     public static ClienteMapper toInstanceMapper() {
         return CLIENTE_MAPPER;
     }
+
+    public static ClienteRepository toInstanceRepository() {
+        return CLIENTE_REPOSITORY;
+    }
 }
