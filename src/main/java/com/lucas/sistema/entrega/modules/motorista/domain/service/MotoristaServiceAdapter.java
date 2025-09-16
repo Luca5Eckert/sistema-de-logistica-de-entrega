@@ -43,6 +43,6 @@ public class MotoristaServiceAdapter implements MotoristaService {
 
     @Override
     public Motorista buscarPeloId(long id) {
-        return motoristaRepository.buscarPeloId(id);
+        return motoristaRepository.buscarPeloId(id).orElseThrow(() -> new MotoristaNullException("Motorista não encontrado com id: " + id));
     }
 }

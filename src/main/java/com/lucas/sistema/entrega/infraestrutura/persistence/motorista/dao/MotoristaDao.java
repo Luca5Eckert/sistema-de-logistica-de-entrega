@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class MotoristaDao {
 
@@ -133,7 +134,7 @@ public class MotoristaDao {
         }
     }
 
-    public Motorista buscarPeloId(long id) {
+    public Optional<Motorista> buscarPeloId(long id) {
         String sql = "SELECT id, nome, cnh, veiculo, cidade_base FROM Motorista WHERE id = ?;";
         try (Connection conn = ConexaoFactory.toInstance();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -142,19 +143,19 @@ public class MotoristaDao {
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    return new Motorista(
+                    return Optional.of(new Motorista(
                             rs.getLong("id"),
                             rs.getString("nome"),
                             rs.getString("cnh"),
                             rs.getString("veiculo"),
                             rs.getString("cidade_base")
-                    );
+                    ));
                 }
             }
         } catch (SQLException e) {
             throw new ConexaoDatabaseException("Erro ao buscar motorista pelo ID.");
         }
-        return null;
+        return Optional.empty();
     }
 
 }

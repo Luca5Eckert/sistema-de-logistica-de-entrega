@@ -6,6 +6,7 @@ import com.lucas.sistema.entrega.modules.motorista.domain.port.MotoristaReposito
 import com.lucas.sistema.entrega.modules.motorista.domain.Motorista;
 
 import java.util.List;
+import java.util.Optional;
 
 public class MotoristaRepositoryAdapter implements MotoristaRepository {
 
@@ -46,7 +47,7 @@ public class MotoristaRepositoryAdapter implements MotoristaRepository {
     }
 
     @Override
-    public Motorista buscarPeloId(long id) {
+    public Optional<Motorista> buscarPeloId(long id) {
         return motoristaDao.buscarPeloId(id);
     }
 }

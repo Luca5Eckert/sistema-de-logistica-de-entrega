@@ -44,8 +44,10 @@ public class MenuExcluirCliente extends Menu {
         System.out.println("                               EXCLUIR CLIENTE                                ");
         System.out.println("------------------------------------------------------------------------------");
 
-        System.out.println("| Digite o ID do cliente que deseja excluir: ");
+        System.out.println("| Digite o ID do cliente que deseja excluir: ( 0 para cancelar )");
         long id = getLeitor().nextLong();
+
+        if(id == 0) return -1;
 
         var cliente = clienteController.buscarPeloID(id);
 

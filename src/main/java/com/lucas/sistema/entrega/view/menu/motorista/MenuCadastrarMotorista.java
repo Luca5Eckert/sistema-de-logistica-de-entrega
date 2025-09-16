@@ -26,7 +26,7 @@ public class MenuCadastrarMotorista extends Menu {
 
         imprimir(motoristaResponse.exibirDados());
 
-        setProximoMenu(this);
+        setProximoMenu(new MenuMotorista(getLeitor()));
     }
 
     private MotoristaAdicionarRequest chamarMenu() {

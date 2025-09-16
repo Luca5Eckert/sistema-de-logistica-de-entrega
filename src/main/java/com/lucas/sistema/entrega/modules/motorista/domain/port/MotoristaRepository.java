@@ -3,6 +3,7 @@ package com.lucas.sistema.entrega.modules.motorista.domain.port;
 import com.lucas.sistema.entrega.modules.motorista.domain.Motorista;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MotoristaRepository {
 
@@ -18,5 +19,5 @@ public interface MotoristaRepository {
 
     List<Motorista> pegarMotoristas();
 
-    Motorista buscarPeloId(long id);
+    Optional<Motorista> buscarPeloId(long id);
 }

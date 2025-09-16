@@ -6,5 +6,8 @@ public record MotoristaResponse(long id, String nome, String cnh, String veiculo
         return " | Nome: " + nome + "\n | CNH: " + cnh + "\n | Placa veiculo: " + veiculo + "\n | Cidade: " + cidadeBase;
     }
 
-
+    @Override
+    public String toString() {
+        return "| ID: " + id + " | Nome: " + nome + " | CNH: " + cnh + " | Placa veiculo: " + veiculo + " | Cidade: " + cidadeBase;
+    }
 }

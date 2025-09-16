@@ -9,6 +9,7 @@ import com.lucas.sistema.entrega.modules.entrega.domain.exceptions.EntregaExclus
 import com.lucas.sistema.entrega.modules.entrega.domain.exceptions.EntregaNullException;
 import com.lucas.sistema.entrega.modules.entrega.domain.exceptions.EntregaStatusNullException;
 import com.lucas.sistema.entrega.modules.entrega.domain.port.EntregaRepository;
+import com.lucas.sistema.entrega.modules.motorista.domain.exception.MotoristaException;
 import com.lucas.sistema.entrega.modules.motorista.domain.port.MotoristaRepository;
 import com.lucas.sistema.entrega.modules.pedido.domain.port.PedidoRepository;
 
@@ -64,6 +65,8 @@ public class EntregaServiceAdapter implements EntregaService {
 
     @Override
     public long pegarQuantidadeEntregasPorMotorista(long idMotorista) {
+        if(!motoristaRepository.existePorId(idMotorista)) throw new MotoristaException(" Motorista não encontrado com id: " + idMotorista);
+
         return entregaRepository.pegarQuantidadeEntregaPorMotorista(idMotorista);
     }
 

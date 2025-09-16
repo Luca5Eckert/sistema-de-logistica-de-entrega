@@ -19,7 +19,7 @@ public class MenuGeral extends Menu {
         Menu proximoMenu = switch(escolha.toUpperCase()){
             case "1" -> new MenuCliente(getLeitor());
             case "2" -> new MenuMotorista(getLeitor());
-            case "3" -> new MenuEntrega(getLeitor());
+            case "4" -> new MenuEntrega(getLeitor());
             case "S" -> null;
             default -> this;
         };
@@ -35,8 +35,8 @@ public class MenuGeral extends Menu {
         System.out.println(" 1- Cliente");
         System.out.println(" 2- Motorista");
         System.out.println(" 3- Pedido");
-        System.out.println(" 4- Evento de entrega");
-        System.out.println(" 5- Entrega");
+        System.out.println(" 4- Entrega");
+        System.out.println(" 5- Evento de entrega");
         System.out.println(" 6- Relatório");
         System.out.println("\n S- Sair");
 
