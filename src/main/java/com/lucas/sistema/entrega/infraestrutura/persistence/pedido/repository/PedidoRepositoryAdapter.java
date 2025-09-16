@@ -10,8 +10,8 @@ public class PedidoRepositoryAdapter implements PedidoRepository {
 
     private final PedidoDao pedidoDAO;
 
-    public PedidoRepositoryAdapter() {
-        this.pedidoDAO = new PedidoDao();
+    public PedidoRepositoryAdapter(PedidoDao pedidoDAO) {
+        this.pedidoDAO = pedidoDAO;
     }
 
     @Override
@@ -32,5 +32,10 @@ public class PedidoRepositoryAdapter implements PedidoRepository {
     @Override
     public Map<String, Long> pegarQuantidadePedidosPendentesPorEstado() {
         return pedidoDAO.pegarQuantidadePedidosPendentesPorEstado();
+    }
+
+    @Override
+    public boolean existePorId(long pedidoId) {
+        return false;
     }
 }

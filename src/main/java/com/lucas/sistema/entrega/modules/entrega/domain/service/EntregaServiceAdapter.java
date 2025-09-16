@@ -4,10 +4,13 @@ import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.entrega.application.port.EntregaService;
 import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
 import com.lucas.sistema.entrega.modules.entrega.domain.enumerator.EntregaStatus;
+import com.lucas.sistema.entrega.modules.entrega.domain.exceptions.EntregaException;
 import com.lucas.sistema.entrega.modules.entrega.domain.exceptions.EntregaExclusaoException;
 import com.lucas.sistema.entrega.modules.entrega.domain.exceptions.EntregaNullException;
 import com.lucas.sistema.entrega.modules.entrega.domain.exceptions.EntregaStatusNullException;
 import com.lucas.sistema.entrega.modules.entrega.domain.port.EntregaRepository;
+import com.lucas.sistema.entrega.modules.motorista.domain.port.MotoristaRepository;
+import com.lucas.sistema.entrega.modules.pedido.domain.port.PedidoRepository;
 
 import java.util.List;
 import java.util.Map;
@@ -15,9 +18,13 @@ import java.util.Map;
 public class EntregaServiceAdapter implements EntregaService {
 
     private final EntregaRepository entregaRepository;
+    private final MotoristaRepository motoristaRepository;
+    private final PedidoRepository pedidoRepository;
 
-    public EntregaServiceAdapter(EntregaRepository entregaRepository) {
+    public EntregaServiceAdapter(EntregaRepository entregaRepository, MotoristaRepository motoristaRepository, PedidoRepository pedidoRepository) {
         this.entregaRepository = entregaRepository;
+        this.motoristaRepository = motoristaRepository;
+        this.pedidoRepository = pedidoRepository;
     }
 
     @Override
@@ -25,6 +32,9 @@ public class EntregaServiceAdapter implements EntregaService {
         if(entrega == null){
             throw new EntregaNullException("A entrega não pode ser nula");
         }
+
+        if(motoristaRepository.existePorId(entrega.getMotoristaId())) throw new EntregaException(" Não encontrado motorista com id: " + entrega.getMotoristaId());
+        if(pedidoRepository.existePorId(entrega.getPedidoId())) throw new EntregaException(" Não encontrado pedido com id: " + entrega.getPedidoId());
 
         entregaRepository.adicionar(entrega);
 
@@ -64,7 +74,7 @@ public class EntregaServiceAdapter implements EntregaService {
 
     @Override
     public void excluirEntrega(long id) {
-        var entrega = entregaRepository.buscarPorId(id).orElseThrow(() -> new EntregaNullException("Não foi encontrada nenhuma entrega disponível"));
+        var entrega = entregaRepository.buscarPorId(id).orElseThrow(() -> new EntregaNullException("Não foi encontrada nenhuma entrega disponível com o id: " + id));
 
         if(entrega.validarExclusao()) throw new EntregaExclusaoException("Entrega só pode ser excluida se for atrasada");
 
@@ -74,6 +84,11 @@ public class EntregaServiceAdapter implements EntregaService {
     @Override
     public Map<String, Long> pegarQuantidadeEntregasPendentesPorCidade() {
         return entregaRepository.pegarQuantidadeEntregasPendentesPorCidade();
+    }
+
+    @Override
+    public Entrega pegarEntrega(long idEntrega) {
+        return entregaRepository.buscarPorId(idEntrega).orElseThrow(() -> new EntregaNullException("Não foi encontrada nenhuma entrega disponível com o id: " + idEntrega));
     }
 
 }

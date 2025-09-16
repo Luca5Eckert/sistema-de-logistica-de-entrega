@@ -28,6 +28,21 @@ public class Pedido {
         this.status = status;
     }
 
+    public Pedido(long clienteId, LocalDateTime dataPedido, double volumeM3, double pesoKg, PedidoStatus status) {
+        this.id = -1;
+        this.clienteId = clienteId;
+        this.dataPedido = dataPedido;
+        this.volumeM3 = volumeM3;
+        this.pesoKg = pesoKg;
+        this.status = status;
+    }
+
+    public Pedido(long id) {
+        this.id = id;
+    }
+
+
+
     public long getId() {
         return id;
     }
