@@ -1,5 +1,6 @@
 package com.lucas.sistema.entrega.view.menu.pedido;
 
+import com.lucas.sistema.entrega.infraestrutura.utils.beans.PedidoBeansUtil;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.menu.MenuGeral;
@@ -7,7 +8,7 @@ import com.lucas.sistema.entrega.view.menu.MenuGeral;
 public class MenuPedido extends Menu {
 
 
-    protected MenuPedido(Leitor leitor) {
+    public MenuPedido(Leitor leitor) {
         super(leitor);
     }
 
@@ -16,6 +17,7 @@ public class MenuPedido extends Menu {
         String input = chamarMenu();
 
         Menu menu = switch (input.toUpperCase()){
+            case "1" -> new MenuAdicionarPedido(getLeitor(), PedidoBeansUtil.toInstanceController());
             case "S" -> new MenuGeral(getLeitor());
             default -> this;
         };
