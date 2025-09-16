@@ -73,5 +73,11 @@ public class EntregaControllerAdapter implements EntregaController {
         return entregaService.pegarQuantidadeEntregasPendentesPorCidade();
     }
 
+    @Override
+    public EntregaResponse pegarEntrega(long idEntrega) {
+        var entrega =  entregaService.pegarEntrega(idEntrega);
+        return entregaMapper.toResponse(entrega);
+    }
+
 
 }

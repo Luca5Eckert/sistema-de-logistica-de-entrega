@@ -22,4 +22,6 @@ public interface EntregaService {
     void excluirEntrega(long id);
 
     Map<String, Long> pegarQuantidadeEntregasPendentesPorCidade();
+
+    Entrega pegarEntrega(long idEntrega);
 }

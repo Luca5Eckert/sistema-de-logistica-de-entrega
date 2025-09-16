@@ -25,4 +25,5 @@ public interface EntregaController {
 
     Map<String, Long> pegarQuantidadeEntregasPendentesPorCidade();
 
+    EntregaResponse pegarEntrega(long idEntrega);
 }

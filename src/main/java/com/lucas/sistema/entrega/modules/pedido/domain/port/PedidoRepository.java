@@ -14,4 +14,6 @@ public interface PedidoRepository {
     void salvar(Pedido pedido);
 
     Map<String, Long> pegarQuantidadePedidosPendentesPorEstado();
+
+    boolean existePorId(long pedidoId);
 }

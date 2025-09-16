@@ -10,4 +10,6 @@ public interface MotoristaRepository {
     boolean buscarEntregaDependente(long id);
 
     boolean buscarPedidoDependente(long id);
+
+    boolean existePorId(long motoristaId);
 }
