@@ -72,14 +72,4 @@ public class MenuAdicionarEntrega extends Menu {
     }
 
 
-    public static void main(String[] args) {
-        try{
-            MenuAdicionarEntrega menuAdicionarEntrega = new MenuAdicionarEntrega(new Leitor(), EntregaBeansUtil.toInstanceController());
-            menuAdicionarEntrega.executarMenu();
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
 }
