@@ -8,23 +8,25 @@ import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaExcluirR
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaResponse;
 import com.lucas.sistema.entrega.modules.entrega.application.port.EntregaMapper;
 import com.lucas.sistema.entrega.modules.entrega.application.port.EntregaService;
+import com.lucas.sistema.entrega.view.port.EntregaController;
 
 import java.util.List;
 import java.util.Map;
 
-public class EntregaController {
+public class EntregaControllerAdapter implements EntregaController {
 
     private final EntregaService entregaService;
     private final EntregaMapper entregaMapper;
     private final ClienteMapper clienteMapper;
 
 
-    public EntregaController(EntregaService entregaService, EntregaMapper entregaMapper, ClienteMapper clienteMapper) {
+    public EntregaControllerAdapter(EntregaService entregaService, EntregaMapper entregaMapper, ClienteMapper clienteMapper) {
         this.entregaService = entregaService;
         this.entregaMapper = entregaMapper;
         this.clienteMapper = clienteMapper;
     }
 
+    @Override
     public EntregaResponse adicionar(EntregaAdicionarRequest entregaAdicionarRequest){
         var entrega = entregaMapper.toEntity(entregaAdicionarRequest);
 
@@ -34,27 +36,31 @@ public class EntregaController {
 
     }
 
+    @Override
     public void excluirEntrega(EntregaExcluirRequest entregaExcluirRequest){
         entregaService.excluirEntrega(entregaExcluirRequest.id());
     }
 
-
+    @Override
     public EntregaResponse atualizarStatus(EntregaAtualizarStatusRequest entregaAtualizarStatusRequest){
         var entrega = entregaService.atualizarStatus(entregaAtualizarStatusRequest.idEntrega(), entregaAtualizarStatusRequest.novoStatus());
 
         return entregaMapper.toResponse(entrega);
     }
 
+    @Override
     public List<EntregaResponse> pegarEntregas(){
         var lista = entregaService.pegarEntregas();
 
         return lista.stream().map(entregaMapper::toResponse).toList();
     }
 
+    @Override
     public long pegarTotalEntregasPorMotorista(long idMotorista){
         return entregaService.pegarQuantidadeEntregasPorMotorista(idMotorista);
     }
 
+    @Override
     public List<ClienteResponse> pegarClientesComMaiorQuantidadeEntregas() {
         var listaClientes = entregaService.pegarClientesComMaiorQuantidadeEntregas();
 
@@ -62,6 +68,7 @@ public class EntregaController {
 
     }
 
+    @Override
     public Map<String, Long> pegarQuantidadeEntregasPendentesPorCidade(){
         return entregaService.pegarQuantidadeEntregasPendentesPorCidade();
     }

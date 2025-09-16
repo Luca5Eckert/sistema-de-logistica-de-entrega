@@ -27,6 +27,16 @@ public class Entrega {
         this.status = status;
     }
 
+    public Entrega(long pedidoId, long motoristaId, LocalDateTime dataSaida, LocalDateTime dataEntrega, EntregaStatus status) {
+        this.id = -1;
+        this.pedidoId = pedidoId;
+        this.motoristaId = motoristaId;
+        this.dataSaida = dataSaida;
+        this.dataEntrega = dataEntrega;
+        this.status = status;
+    }
+
+
     public EntregaStatus getStatus() {
         return status;
     }

@@ -1,11 +1,12 @@
 package com.lucas.sistema.entrega.view.menu.entrega;
 
 import com.lucas.sistema.entrega.infraestrutura.utils.ConsoleUtil;
-import com.lucas.sistema.entrega.modules.entrega.application.controller.EntregaController;
+import com.lucas.sistema.entrega.infraestrutura.utils.beans.EntregaBeansUtil;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAdicionarRequest;
 import com.lucas.sistema.entrega.modules.entrega.domain.enumerator.EntregaStatus;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
+import com.lucas.sistema.entrega.view.port.EntregaController;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -70,5 +71,15 @@ public class MenuAdicionarEntrega extends Menu {
 
     }
 
+
+    public static void main(String[] args) {
+        try{
+            MenuAdicionarEntrega menuAdicionarEntrega = new MenuAdicionarEntrega(new Leitor(), EntregaBeansUtil.toInstanceController());
+            menuAdicionarEntrega.executarMenu();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 }

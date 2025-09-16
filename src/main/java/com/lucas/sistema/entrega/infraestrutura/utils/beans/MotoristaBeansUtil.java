@@ -12,8 +12,8 @@ import com.lucas.sistema.entrega.modules.motorista.domain.service.MotoristaServi
 
 public class MotoristaBeansUtil {
 
-    private final static MotoristaDao Motorista_DAO = new MotoristaDao();
-    private final static MotoristaRepository MOTORISTA_REPOSITORY = new MotoristaRepositoryAdapter(Motorista_DAO);
+    private final static MotoristaDao MOTORISTA_DAO = new MotoristaDao();
+    private final static MotoristaRepository MOTORISTA_REPOSITORY = new MotoristaRepositoryAdapter(MOTORISTA_DAO);
     private final static MotoristaService MOTORISTA_SERVICE = new MotoristaServiceAdapter(MOTORISTA_REPOSITORY);
     private final static MotoristaMapper MOTORISTA_MAPPER = new MotoristaMapperAdapter();
     private final static MotoristaControllerAdapter MOTORISTA_CONTROLLER = new MotoristaControllerAdapter(MOTORISTA_SERVICE, MOTORISTA_MAPPER);

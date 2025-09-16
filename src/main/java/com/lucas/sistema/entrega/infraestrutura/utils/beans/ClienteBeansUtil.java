@@ -26,4 +26,7 @@ public class ClienteBeansUtil {
         return CLIENTE_CONTROLLER;
     }
 
+    public static ClienteMapper toInstanceMapper() {
+        return CLIENTE_MAPPER;
+    }
 }
