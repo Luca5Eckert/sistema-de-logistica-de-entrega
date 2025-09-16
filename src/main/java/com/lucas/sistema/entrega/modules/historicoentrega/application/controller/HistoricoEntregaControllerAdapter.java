@@ -5,13 +5,13 @@ import com.lucas.sistema.entrega.modules.historicoentrega.application.dto.Histor
 import com.lucas.sistema.entrega.modules.historicoentrega.application.port.HistoricoEntregaMapper;
 import com.lucas.sistema.entrega.modules.historicoentrega.application.port.HistoricoEntregaService;
 
-public class HistoricoEntregaController {
+public class HistoricoEntregaControllerAdapter {
 
     private final HistoricoEntregaService historicoEntregaService;
     private final HistoricoEntregaMapper historicoEntregaMapper;
 
 
-    public HistoricoEntregaController(HistoricoEntregaService historicoEntregaService, HistoricoEntregaMapper historicoEntregaMapper) {
+    public HistoricoEntregaControllerAdapter(HistoricoEntregaService historicoEntregaService, HistoricoEntregaMapper historicoEntregaMapper) {
         this.historicoEntregaService = historicoEntregaService;
         this.historicoEntregaMapper = historicoEntregaMapper;
     }
