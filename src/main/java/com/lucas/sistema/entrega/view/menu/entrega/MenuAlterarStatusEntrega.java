@@ -25,6 +25,8 @@ public class MenuAlterarStatusEntrega extends Menu {
 
         System.out.println("| Alterado com sucesso ");
 
+        setProximoMenu(new MenuEntrega(getLeitor()));
+
     }
 
     private EntregaAtualizarStatusRequest chamarMenu() {

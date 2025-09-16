@@ -2,6 +2,8 @@ package com.lucas.sistema.entrega.modules.motorista.domain.port;
 
 import com.lucas.sistema.entrega.modules.motorista.domain.Motorista;
 
+import java.util.List;
+
 public interface MotoristaRepository {
     void cadastrar(Motorista motorista);
 
@@ -12,4 +14,6 @@ public interface MotoristaRepository {
     boolean buscarPedidoDependente(long id);
 
     boolean existePorId(long motoristaId);
+
+    List<Motorista> pegarMotoristas();
 }

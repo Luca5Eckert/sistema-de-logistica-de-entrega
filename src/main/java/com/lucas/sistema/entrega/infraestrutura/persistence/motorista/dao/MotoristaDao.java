@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MotoristaDao {
 
@@ -107,4 +109,28 @@ public class MotoristaDao {
         }
         return false;
     }
+
+    public List<Motorista> pegarMotoristas() {
+        String sql = "SELECT id, nome, cnh, veiculo, cidade_base FROM Motorista;";
+        List<Motorista> motoristas = new ArrayList<>();
+        try (Connection conn = ConexaoFactory.toInstance();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                long id = rs.getLong("id");
+                String nome = rs.getString("nome");
+                String cnh = rs.getString("cnh");
+                String veiculo = rs.getString("veiculo");
+                String cidadeBase = rs.getString("cidade_base");
+
+                Motorista motorista = new Motorista(id, nome, cnh, veiculo, cidadeBase);
+                motoristas.add(motorista);
+            }
+            return motoristas;
+        } catch (SQLException e) {
+            throw new ConexaoDatabaseException("Erro ao conectar ao banco de dados ao listar motoristas.");
+        }
+    }
+
 }

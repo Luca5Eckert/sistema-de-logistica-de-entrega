@@ -7,6 +7,8 @@ import com.lucas.sistema.entrega.modules.motorista.domain.exception.MotoristaDep
 import com.lucas.sistema.entrega.modules.motorista.domain.exception.MotoristaNullException;
 import com.lucas.sistema.entrega.modules.motorista.domain.port.MotoristaRepository;
 
+import java.util.List;
+
 public class MotoristaServiceAdapter implements MotoristaService {
 
     private final MotoristaRepository motoristaRepository;
@@ -32,5 +34,10 @@ public class MotoristaServiceAdapter implements MotoristaService {
         if(motoristaRepository.buscarPedidoDependente(id)) throw new MotoristaDependenciaException("Não é possível deletar um cliente que possui uma entrega dependente a ele");
 
         if(!deletou) throw new MotoristaNullException("Motorista não existe com id: " + id );
+    }
+
+    @Override
+    public List<Motorista> pegarMotoristas() {
+        return motoristaRepository.pegarMotoristas();
     }
 }

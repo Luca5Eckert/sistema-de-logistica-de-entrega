@@ -5,6 +5,8 @@ import com.lucas.sistema.entrega.modules.motorista.domain.port.MotoristaReposito
 
 import com.lucas.sistema.entrega.modules.motorista.domain.Motorista;
 
+import java.util.List;
+
 public class MotoristaRepositoryAdapter implements MotoristaRepository {
 
     private final MotoristaDao motoristaDao;
@@ -36,5 +38,10 @@ public class MotoristaRepositoryAdapter implements MotoristaRepository {
     @Override
     public boolean existePorId(long motoristaId) {
         return motoristaDao.existePorId(motoristaId);
+    }
+
+    @Override
+    public List<Motorista> pegarMotoristas() {
+        return motoristaDao.pegarMotoristas();
     }
 }

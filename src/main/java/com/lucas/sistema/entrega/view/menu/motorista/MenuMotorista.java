@@ -1,9 +1,10 @@
 package com.lucas.sistema.entrega.view.menu.motorista;
 
-import com.lucas.sistema.entrega.infraestrutura.utils.beans.MotoristaBeansUtil;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.menu.MenuGeral;
+
+import static com.lucas.sistema.entrega.infraestrutura.utils.beans.MotoristaBeansUtil.toInstanceController;
 
 public class MenuMotorista extends Menu {
 
@@ -16,7 +17,8 @@ public class MenuMotorista extends Menu {
         String entrada = chamarMenu();
 
         Menu proximoMenu = switch(entrada.toUpperCase()){
-            case "1" -> new MenuCadastrarMotorista(getLeitor(), MotoristaBeansUtil.toInstanceController());
+            case "1" -> new MenuCadastrarMotorista(getLeitor(), toInstanceController());
+            case "2" -> new MenuListarMotorista(getLeitor(), toInstanceController());
             case "S" -> new MenuGeral(getLeitor());
             default -> this;
         };
