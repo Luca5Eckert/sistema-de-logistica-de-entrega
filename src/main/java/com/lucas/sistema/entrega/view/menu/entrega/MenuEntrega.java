@@ -8,7 +8,6 @@ import static com.lucas.sistema.entrega.infraestrutura.utils.beans.EntregaBeansU
 
 public class MenuEntrega extends Menu {
 
-
     public MenuEntrega(Leitor leitor) {
         super(leitor);
     }
@@ -20,6 +19,8 @@ public class MenuEntrega extends Menu {
         Menu menu = switch(entrada.toUpperCase()){
             case "1" -> new MenuAdicionarEntrega(getLeitor(), toInstanceController());
             case "2" -> new MenuAlterarStatusEntrega(getLeitor(), toInstanceController());
+            case "3" -> new MenuExcluirEntrega(getLeitor(), toInstanceController());
+            case "4" -> new MenuEntregaPorCidade(getLeitor(), toInstanceController());
             case "S" -> new MenuGeral(getLeitor());
             default -> this;
         };

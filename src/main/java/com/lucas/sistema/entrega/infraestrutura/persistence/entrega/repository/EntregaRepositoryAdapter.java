@@ -54,6 +54,6 @@ public class EntregaRepositoryAdapter implements EntregaRepository {
 
     @Override
     public Map<String, Long> pegarQuantidadeEntregasPendentesPorCidade() {
-        return pegarQuantidadeEntregasPendentesPorCidade();
+        return entregaDao.pegarQuantidadeEntregasPendentesPorCidade();
     }
 }

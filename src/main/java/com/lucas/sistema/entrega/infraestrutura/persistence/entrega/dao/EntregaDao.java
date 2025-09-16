@@ -158,6 +158,7 @@ public class EntregaDao {
             LIMIT 5;
             """;
         List<Cliente> clientes = new ArrayList<>();
+
         try (Connection conn = ConexaoFactory.toInstance();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {

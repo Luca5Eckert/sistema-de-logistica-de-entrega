@@ -24,6 +24,8 @@ public class MenuClienteVolume extends Menu {
         var clientes = entregaController.pegarClientesComMaiorQuantidadeEntregas();
 
         chamarMenu(clientes);
+
+        setProximoMenu(new MenuCliente(getLeitor()));
     }
 
     private void chamarMenu(List<ClienteResponse> clientes) {

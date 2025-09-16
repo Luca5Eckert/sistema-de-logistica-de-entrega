@@ -24,6 +24,12 @@ public class MenuAdicionarEntrega extends Menu {
     @Override
     public void executarMenu() {
         var entrega = chamarMenu();
+
+        if(entrega == null){
+            setProximoMenu(new MenuEntrega(getLeitor()));
+            return;
+        }
+
         var entregaResponse = entregaController.adicionar(entrega);
 
         ConsoleUtil.imprimir("Entrega adicionada com sucesso");
@@ -36,8 +42,14 @@ public class MenuAdicionarEntrega extends Menu {
         System.out.println("------------------------------------------------------------------------------");
         System.out.println("                            ADICIONAR ENTREGA                                 ");
         System.out.println("------------------------------------------------------------------------------");
+        System.out.println(" 0 - Sair");
 
         long idPedido = lerId("pedido");
+
+        if(idPedido == 0){
+            return null;
+        }
+
         long idMotorista = lerId("motorista");
         EntregaStatus status = lerStatus();
         LocalDateTime dataSaida = lerDataSaida();

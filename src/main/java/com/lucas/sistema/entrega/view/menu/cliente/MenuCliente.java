@@ -1,6 +1,7 @@
 package com.lucas.sistema.entrega.view.menu.cliente;
 
 import com.lucas.sistema.entrega.infraestrutura.utils.beans.ClienteBeansUtil;
+import com.lucas.sistema.entrega.infraestrutura.utils.beans.EntregaBeansUtil;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.menu.MenuGeral;
@@ -19,6 +20,7 @@ public class MenuCliente extends Menu {
             case "1" -> new MenuAdicionarCliente(getLeitor(), ClienteBeansUtil.toInstanceController());
             case "2" -> new MenuListarCliente(getLeitor(), ClienteBeansUtil.toInstanceController());
             case "3" -> new MenuExcluirCliente(getLeitor(), ClienteBeansUtil.toInstanceController());
+            case "4" -> new MenuClienteVolume(getLeitor(), EntregaBeansUtil.toInstanceController());
             case "S" -> new MenuGeral(getLeitor());
             default -> this;
         };
