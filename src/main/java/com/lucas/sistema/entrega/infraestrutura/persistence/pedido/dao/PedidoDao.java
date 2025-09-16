@@ -51,7 +51,6 @@ public class PedidoDao {
                 if (rs.next()) {
                     long id = rs.getLong("id");
                     long clienteId = rs.getLong("cliente_id");
-                    // CORREÇÃO: Usar getTimestamp para ler um valor de data e hora
                     LocalDateTime dataPedido = rs.getTimestamp("data_pedido").toLocalDateTime();
                     double volumeM3 = rs.getDouble("volume_m3");
                     double pesoKg = rs.getDouble("peso_kg");
@@ -77,7 +76,6 @@ public class PedidoDao {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setLong(1, pedido.getClienteId());
-            // CORREÇÃO: Usar setTimestamp para salvar um LocalDateTime
             ps.setTimestamp(2, java.sql.Timestamp.valueOf(pedido.getDataPedido()));
             ps.setDouble(3, pedido.getVolumeM3());
             ps.setDouble(4, pedido.getPesoKg());

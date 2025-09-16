@@ -12,7 +12,7 @@ public record EntregaResponse(long id, long pedidoId, long motoristaId, LocalDat
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String dataTexto = dataSaida.format(formatter);
 
-        return " | Pedido Id: " + pedidoId + "\n | Motorista Id: " + motoristaId + "\n Data Saida: " + dataTexto + "\n | Entrega status: " + entregaStatus;
+        return " | Pedido Id: " + pedidoId + "\n | Motorista Id: " + motoristaId + "\n | Data Saida: " + dataTexto + "\n | Entrega status: " + entregaStatus;
     }
 
 }

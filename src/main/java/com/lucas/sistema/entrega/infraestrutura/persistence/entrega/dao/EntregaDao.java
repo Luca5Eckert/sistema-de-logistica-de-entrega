@@ -6,12 +6,11 @@ import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
 import com.lucas.sistema.entrega.modules.entrega.domain.enumerator.EntregaStatus;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,17 +21,16 @@ public class EntregaDao {
 
     public void adicionar(Entrega entrega) {
         String sql = """
-            INSERT INTO Entrega (pedido_id, motorista_id, data_saida, data_entrega, status)
-            VALUES (?, ?, ?, ?, ?);
+            INSERT INTO Entrega (pedido_id, motorista_id, data_saida, status)
+            VALUES (?, ?, ?, ?);
             """;
         try (Connection conn = ConexaoFactory.toInstance();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setLong(1, entrega.getPedidoId());
             ps.setLong(2, entrega.getMotoristaId());
-            ps.setDate(3, Date.valueOf(entrega.getDataSaida().format(DateTimeFormatter.ISO_LOCAL_TIME)));
-            ps.setDate(4, Date.valueOf(entrega.getDataEntrega().format(DateTimeFormatter.ISO_LOCAL_TIME)));
-            ps.setString(5, entrega.getStatus().name());
+            ps.setTimestamp(3, Timestamp.valueOf(entrega.getDataSaida()));
+            ps.setString(4, entrega.getStatus().name());
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -55,8 +53,8 @@ public class EntregaDao {
                     long entregaId = rs.getLong("id");
                     long pedidoId = rs.getLong("pedido_id");
                     long motoristaId = rs.getLong("motorista_id");
-                    LocalDateTime dataSaida = rs.getDate("data_saida").toLocalDate().atStartOfDay();
-                    LocalDateTime dataEntrega = rs.getDate("data_entrega").toLocalDate().atStartOfDay();
+                    LocalDateTime dataSaida = rs.getTimestamp("data_saida").toLocalDateTime();
+                    LocalDateTime dataEntrega = rs.getTimestamp("data_entrega").toLocalDateTime();
                     EntregaStatus status = EntregaStatus.valueOf(rs.getString("status"));
 
                     Entrega entrega = new Entrega(entregaId, pedidoId, motoristaId, dataSaida, dataEntrega, status);
@@ -80,8 +78,8 @@ public class EntregaDao {
 
             ps.setLong(1, entrega.getPedidoId());
             ps.setLong(2, entrega.getMotoristaId());
-            ps.setDate(3, Date.valueOf(entrega.getDataSaida().format(DateTimeFormatter.ISO_LOCAL_TIME)));
-            ps.setDate(4, Date.valueOf(entrega.getDataEntrega().format(DateTimeFormatter.ISO_LOCAL_TIME)));
+            ps.setTimestamp(3, Timestamp.valueOf(entrega.getDataSaida()));
+            ps.setTimestamp(4, Timestamp.valueOf(entrega.getDataEntrega()));
             ps.setString(5, entrega.getStatus().name());
             ps.setLong(6, entrega.getId());
             ps.executeUpdate();
@@ -105,8 +103,8 @@ public class EntregaDao {
                 long id = rs.getLong("id");
                 long pedidoId = rs.getLong("pedido_id");
                 long motoristaId = rs.getLong("motorista_id");
-                LocalDateTime dataSaida = rs.getDate("data_saida").toLocalDate().atStartOfDay();
-                LocalDateTime dataEntrega = rs.getDate("data_entrega").toLocalDate().atStartOfDay();
+                LocalDateTime dataSaida = rs.getTimestamp("data_saida").toLocalDateTime();
+                LocalDateTime dataEntrega = rs.getTimestamp("data_entrega").toLocalDateTime();
                 EntregaStatus status = EntregaStatus.valueOf(rs.getString("status"));
 
                 Entrega entrega = new Entrega(id, pedidoId, motoristaId, dataSaida, dataEntrega, status);
@@ -119,17 +117,18 @@ public class EntregaDao {
         return Optional.of(entregas);
     }
 
+
     public long pegarQuantidadeEntregaPorMotorista(long idMotorista) {
         String sql = """
-            SELECT COUNT(*) FROM Entrega 
+            SELECT COUNT(*) FROM Entrega
             WHERE motorista_id = ?;
-            """;
+           """;
         try (Connection conn = ConexaoFactory.toInstance();
              PreparedStatement ps = conn.prepareStatement(sql)){
 
-             ps.setLong(1, idMotorista);
+            ps.setLong(1, idMotorista);
 
-             ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 return rs.getLong(1);
@@ -229,6 +228,4 @@ public class EntregaDao {
         }
         return entregasPorCidade;
     }
-
-
 }

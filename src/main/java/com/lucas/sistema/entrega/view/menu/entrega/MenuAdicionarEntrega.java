@@ -33,6 +33,7 @@ public class MenuAdicionarEntrega extends Menu {
         var entregaResponse = entregaController.adicionar(entrega);
 
         ConsoleUtil.imprimir("Entrega adicionada com sucesso");
+
         ConsoleUtil.imprimir(entregaResponse.exibirDados());
 
         setProximoMenu(new MenuEntrega(getLeitor()));
