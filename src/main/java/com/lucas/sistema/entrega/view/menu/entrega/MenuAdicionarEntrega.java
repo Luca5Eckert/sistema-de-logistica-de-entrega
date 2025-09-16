@@ -66,7 +66,7 @@ public class MenuAdicionarEntrega extends Menu {
             return LocalDate.parse(diaSaida, formatter).atStartOfDay();
 
         } catch (Exception e) {
-            throw new RuntimeException("Data mal formatada, tente novamente: ");
+            throw new RuntimeException("Data mal formatada, tente novamente");
         }
 
     }
