@@ -2,6 +2,7 @@ package com.lucas.sistema.entrega.infraestrutura.persistence.entrega.dao;
 
 import com.lucas.sistema.entrega.infraestrutura.conexao.ConexaoFactory;
 import com.lucas.sistema.entrega.infraestrutura.conexao.exception.ConexaoDatabaseException;
+import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteEntregaResponse;
 import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
 import com.lucas.sistema.entrega.modules.entrega.domain.enumerator.EntregaStatus;
@@ -140,10 +141,10 @@ public class EntregaDao {
         return -1;
     }
 
-    public List<Cliente> pegarClientesComMaiorQuantidadeEntregas() {
+    public List<ClienteEntregaResponse> pegarClientesComMaiorQuantidadeEntregas() {
         String sql = """
             SELECT
-                c.id, c.nome, c.cpf_cnpj, c.endereco, c.cidade, c.estado
+                c.id, c.nome, COUNT(e.id) qtd_entrega
             FROM
                 Entrega e
             JOIN
@@ -156,7 +157,7 @@ public class EntregaDao {
                 COUNT(e.id) DESC
             LIMIT 5;
             """;
-        List<Cliente> clientes = new ArrayList<>();
+        List<ClienteEntregaResponse> clientes = new ArrayList<>();
 
         try (Connection conn = ConexaoFactory.toInstance();
              PreparedStatement ps = conn.prepareStatement(sql);
@@ -165,18 +166,15 @@ public class EntregaDao {
             while (rs.next()) {
                 long id = rs.getLong("id");
                 String nome = rs.getString("nome");
-                String cpfCnpj = rs.getString("cpf_cnpj");
-                String endereco = rs.getString("endereco");
-                String cidade = rs.getString("cidade");
-                String estado = rs.getString("estado");
+                int qtdEntrega = rs.getInt("qtd_entrega");
 
-                Cliente cliente = new Cliente(id, nome, cpfCnpj, endereco, cidade, estado);
-                clientes.add(cliente);
+                clientes.add(new ClienteEntregaResponse(id, nome, qtdEntrega));
             }
 
         } catch (SQLException e) {
             throw new ConexaoDatabaseException("Erro ao conectar ao banco dados");
         }
+
         return clientes;
     }
 

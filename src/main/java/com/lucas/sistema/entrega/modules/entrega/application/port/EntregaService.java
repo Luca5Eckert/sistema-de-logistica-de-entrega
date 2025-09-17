@@ -1,6 +1,6 @@
 package com.lucas.sistema.entrega.modules.entrega.application.port;
 
-import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
+import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteEntregaResponse;
 import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
 import com.lucas.sistema.entrega.modules.entrega.domain.enumerator.EntregaStatus;
 
@@ -17,7 +17,7 @@ public interface EntregaService {
 
     long pegarQuantidadeEntregasPorMotorista(long idMotorista);
 
-    List<Cliente> pegarClientesComMaiorQuantidadeEntregas();
+    List<ClienteEntregaResponse> pegarClientesComMaiorQuantidadeEntregas();
 
     void excluirEntrega(long id);
 

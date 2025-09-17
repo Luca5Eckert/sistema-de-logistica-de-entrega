@@ -1,6 +1,6 @@
 package com.lucas.sistema.entrega.view.port;
 
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse;
+import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteEntregaResponse;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAdicionarRequest;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAtualizarStatusRequest;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaExcluirRequest;
@@ -21,7 +21,7 @@ public interface EntregaController {
 
     long pegarTotalEntregasPorMotorista(long idMotorista);
 
-    List<ClienteResponse> pegarClientesComMaiorQuantidadeEntregas();
+    List<ClienteEntregaResponse> pegarClientesComMaiorQuantidadeEntregas();
 
     Map<String, Long> pegarQuantidadeEntregasPendentesPorCidade();
 

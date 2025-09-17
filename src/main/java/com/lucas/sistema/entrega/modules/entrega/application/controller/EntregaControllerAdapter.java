@@ -1,6 +1,6 @@
 package com.lucas.sistema.entrega.modules.entrega.application.controller;
 
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse;
+import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteEntregaResponse;
 import com.lucas.sistema.entrega.modules.cliente.domain.port.ClienteMapper;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAdicionarRequest;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAtualizarStatusRequest;
@@ -61,10 +61,8 @@ public class EntregaControllerAdapter implements EntregaController {
     }
 
     @Override
-    public List<ClienteResponse> pegarClientesComMaiorQuantidadeEntregas() {
-        var listaClientes = entregaService.pegarClientesComMaiorQuantidadeEntregas();
-
-        return listaClientes.stream().map(clienteMapper::toResponse).toList();
+    public List<ClienteEntregaResponse> pegarClientesComMaiorQuantidadeEntregas() {
+        return entregaService.pegarClientesComMaiorQuantidadeEntregas();
 
     }
 

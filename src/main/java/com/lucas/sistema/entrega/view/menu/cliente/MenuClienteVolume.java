@@ -1,5 +1,6 @@
 package com.lucas.sistema.entrega.view.menu.cliente;
 
+import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteEntregaResponse;
 import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
@@ -28,7 +29,7 @@ public class MenuClienteVolume extends Menu {
         setProximoMenu(new MenuCliente(getLeitor()));
     }
 
-    private void chamarMenu(List<ClienteResponse> clientes) {
+    private void chamarMenu(List<ClienteEntregaResponse> clientes) {
 
         System.out.println("------------------------------------------------------------------------------");
         System.out.println("                    CLIENTES COM MAIOR VOLUME ENTREGA                         ");

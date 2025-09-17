@@ -1,5 +1,6 @@
 package com.lucas.sistema.entrega.modules.entrega.domain.service;
 
+import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteEntregaResponse;
 import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.entrega.application.port.EntregaService;
 import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
@@ -71,7 +72,7 @@ public class EntregaServiceAdapter implements EntregaService {
     }
 
     @Override
-    public List<Cliente> pegarClientesComMaiorQuantidadeEntregas(){
+    public List<ClienteEntregaResponse> pegarClientesComMaiorQuantidadeEntregas(){
         return entregaRepository.pegarClientesComMaiorQuantidadeEntregas();
     }
 

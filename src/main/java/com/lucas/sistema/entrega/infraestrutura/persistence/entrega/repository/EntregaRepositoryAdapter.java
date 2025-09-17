@@ -1,6 +1,7 @@
 package com.lucas.sistema.entrega.infraestrutura.persistence.entrega.repository;
 
 import com.lucas.sistema.entrega.infraestrutura.persistence.entrega.dao.EntregaDao;
+import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteEntregaResponse;
 import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
 import com.lucas.sistema.entrega.modules.entrega.domain.port.EntregaRepository;
@@ -43,7 +44,7 @@ public class EntregaRepositoryAdapter implements EntregaRepository {
     }
 
     @Override
-    public List<Cliente> pegarClientesComMaiorQuantidadeEntregas() {
+    public List<ClienteEntregaResponse> pegarClientesComMaiorQuantidadeEntregas() {
         return entregaDao.pegarClientesComMaiorQuantidadeEntregas();
     }
 
