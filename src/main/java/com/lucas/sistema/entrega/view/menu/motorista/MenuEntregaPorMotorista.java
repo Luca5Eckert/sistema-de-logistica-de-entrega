@@ -32,7 +32,7 @@ public class MenuEntregaPorMotorista extends Menu {
             System.out.println(" Motorista não encontrado ");
             return;
         }
-        imprimir(String.valueOf(quantidadeEntrega));
+        imprimir("Quantidade entregas: " + quantidadeEntrega);
     }
 
     private long chamarMenu() {
