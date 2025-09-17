@@ -20,6 +20,11 @@ public class MenuCadastrarMotorista extends Menu {
     public void executarMenu() {
         var motorista = chamarMenu();
 
+        if(motorista == null) {
+            setProximoMenu(new MenuMotorista(getLeitor()));
+            return;
+        }
+
         var motoristaResponse = motoristaController.cadastrar(motorista);
 
         System.out.println("Motorista Adicionado com sucesso");
@@ -31,11 +36,15 @@ public class MenuCadastrarMotorista extends Menu {
 
     private MotoristaAdicionarRequest chamarMenu() {
         System.out.println("------------------------------------------------------------------------------");
-        System.out.println("                              ADICIONAR MOTORISTA                               ");
+        System.out.println("                              ADICIONAR MOTORISTA                             ");
         System.out.println("------------------------------------------------------------------------------");
+
+        System.out.println(" S- Sair");
 
         System.out.println(" Nome do motorista: ");
         String nome = getLeitor().nextLine();
+
+        if(nome.equalsIgnoreCase("S")) return null;
 
         System.out.println(" CNH: ");
         String cnh = getLeitor().nextLine();

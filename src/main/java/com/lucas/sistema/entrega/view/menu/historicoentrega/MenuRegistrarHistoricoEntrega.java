@@ -5,6 +5,7 @@ import com.lucas.sistema.entrega.modules.historicoentrega.application.dto.Histor
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.menu.entrega.MenuEntrega;
+import com.lucas.sistema.entrega.view.menu.motorista.MenuMotorista;
 import com.lucas.sistema.entrega.view.port.HistoricoEntregaController;
 
 import java.time.LocalDate;
@@ -24,6 +25,11 @@ public class MenuRegistrarHistoricoEntrega extends Menu {
     public void executarMenu() {
         var historicoEntrega = chamarMenu();
 
+        if(historicoEntrega == null){
+            setProximoMenu(new MenuMotorista(getLeitor()));
+            return;
+        }
+
         var historicoEntregaResponse = historicoEntregaController.adicionar(historicoEntrega);
 
         ConsoleUtil.imprimir("Evento adicionada com sucesso");
@@ -38,9 +44,12 @@ public class MenuRegistrarHistoricoEntrega extends Menu {
         System.out.println("------------------------------------------------------------------------------");
         System.out.println("                            REGISTRAR EVENTO                                  ");
         System.out.println("------------------------------------------------------------------------------");
+        System.out.println(" 0 - Sair");
 
         System.out.println(" Id entrega: ");
         var idEntrega = getLeitor().nextLong();
+
+        if(idEntrega == 0) return null;
 
         System.out.println(" Descrição: ");
         var descricao = getLeitor().nextLine();

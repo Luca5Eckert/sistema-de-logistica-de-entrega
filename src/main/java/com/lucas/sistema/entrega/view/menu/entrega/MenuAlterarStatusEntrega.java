@@ -21,6 +21,12 @@ public class MenuAlterarStatusEntrega extends Menu {
 
         var atualizarEntregaRequest = chamarMenu();
 
+        if(atualizarEntregaRequest == null){
+            System.out.println("| Atualização cancelada");
+            setProximoMenu(new MenuEntrega(getLeitor()));
+            return;
+        }
+
         entregaController.atualizarStatus(atualizarEntregaRequest);
 
         System.out.println("| Alterado com sucesso ");
@@ -35,8 +41,12 @@ public class MenuAlterarStatusEntrega extends Menu {
         System.out.println("                       ATUALIZAR STATUS ENTREGA                               ");
         System.out.println("------------------------------------------------------------------------------");
 
+        System.out.println(" 0 - Sair");
+
         System.out.println("| Digite o id da entrega: ");
         long idEntrega = getLeitor().nextLong();
+
+        if(idEntrega == 0) return null;
 
         var entregaResponse = entregaController.pegarEntrega(idEntrega);
 

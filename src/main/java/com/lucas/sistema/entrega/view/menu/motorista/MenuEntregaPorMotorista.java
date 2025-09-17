@@ -20,6 +20,11 @@ public class MenuEntregaPorMotorista extends Menu {
     public void executarMenu() {
         var id = chamarMenu();
 
+        if(id == 0){
+            setProximoMenu(new MenuMotorista(getLeitor()));
+            return;
+        }
+
         long quantidadeEntrega = entregaController.pegarTotalEntregasPorMotorista(id);
 
         exibirQuantidadeEntrega(quantidadeEntrega);
@@ -41,7 +46,7 @@ public class MenuEntregaPorMotorista extends Menu {
         System.out.println("                      TOTAL DE ENTREGAS POR MOTORISTA                         ");
         System.out.println("------------------------------------------------------------------------------");
 
-        System.out.println("| Digite o id do motorista: ");
+        System.out.println("| Digite o id do motorista: ( 0 para sair )");
 
         return getLeitor().nextLong();
 

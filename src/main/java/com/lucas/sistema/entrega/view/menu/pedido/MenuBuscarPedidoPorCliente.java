@@ -21,7 +21,14 @@ public class MenuBuscarPedidoPorCliente extends Menu {
 
     @Override
     public void executarMenu() {
-        List<PedidoResponse> pedidos = chamarMenu();
+        String cpfCnpj = chamarMenu();
+
+        if(cpfCnpj.equalsIgnoreCase("S")){
+            setProximoMenu(new MenuPedido(getLeitor()));
+            return;
+        }
+
+        var pedidos = pedidoController.buscarPedidosPorCliente(cpfCnpj);
 
         if (pedidos.isEmpty()) {
             imprimir("| Não foram encontrados pedidos para este cliente.");
@@ -32,16 +39,15 @@ public class MenuBuscarPedidoPorCliente extends Menu {
         setProximoMenu(new MenuPedido(getLeitor()));
     }
 
-    private List<PedidoResponse> chamarMenu() {
+    private String chamarMenu() {
         System.out.println("------------------------------------------------------------------------------");
         System.out.println("                      BUSCAR PEDIDO POR CLIENTE                               ");
         System.out.println("------------------------------------------------------------------------------");
+        System.out.println(" S- Sair");
 
         imprimir("| Digite o CPF/CNPJ do cliente: ");
-        String documento = getLeitor().nextLine();
+        return  getLeitor().nextLine();
 
-        System.out.println("------------------------------------------------------------------------------");
-
-        return pedidoController.buscarPedidosPorCliente(documento);
     }
+
 }
