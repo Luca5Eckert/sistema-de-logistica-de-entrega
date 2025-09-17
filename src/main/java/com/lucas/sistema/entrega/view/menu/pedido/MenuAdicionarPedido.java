@@ -9,6 +9,8 @@ import com.lucas.sistema.entrega.view.port.PedidoController;
 
 import java.time.LocalDateTime;
 
+import static com.lucas.sistema.entrega.infraestrutura.utils.ConsoleUtil.imprimir;
+
 public class MenuAdicionarPedido extends Menu {
 
     private final PedidoController pedidoController;
@@ -29,9 +31,9 @@ public class MenuAdicionarPedido extends Menu {
 
         var pedidoResponse = pedidoController.adicionar(pedido);
 
-        System.out.println(pedidoResponse.exibirDados());
+        imprimir(" Pedido adicionado com sucesso");
 
-        System.out.println(" Pedido adicionado com sucesso");
+        System.out.println(pedidoResponse.exibirDados());
 
         setProximoMenu(new MenuGeral(getLeitor()));
 

@@ -33,7 +33,10 @@ public class MenuBuscarPedidoPorCliente extends Menu {
         if (pedidos.isEmpty()) {
             imprimir("| Não foram encontrados pedidos para este cliente.");
         } else {
+            System.out.println("------------------------------------------------------------------------------");
             imprimirLista(pedidos);
+            System.out.println("------------------------------------------------------------------------------");
+
         }
 
         setProximoMenu(new MenuPedido(getLeitor()));
