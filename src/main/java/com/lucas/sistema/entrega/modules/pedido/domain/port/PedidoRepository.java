@@ -2,6 +2,7 @@ package com.lucas.sistema.entrega.modules.pedido.domain.port;
 
 import com.lucas.sistema.entrega.modules.pedido.domain.Pedido;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -16,4 +17,8 @@ public interface PedidoRepository {
     Map<String, Long> pegarQuantidadePedidosPendentesPorEstado();
 
     boolean existePorId(long pedidoId);
+
+    List<Pedido> buscarPedidosPorCliente(String cpfCnpj);
+
+    Optional<Pedido> buscarPeloId(long id);
 }

@@ -7,6 +7,7 @@ import com.lucas.sistema.entrega.modules.pedido.application.port.PedidoMapper;
 import com.lucas.sistema.entrega.modules.pedido.application.port.PedidoService;
 import com.lucas.sistema.entrega.view.port.PedidoController;
 
+import java.util.List;
 import java.util.Map;
 
 public class PedidoControllerAdapter implements PedidoController {
@@ -40,6 +41,18 @@ public class PedidoControllerAdapter implements PedidoController {
     @Override
     public Map<String, Long> pegarQuantidadePedidosPendentesPorEstado(){
         return pedidoService.pegarQuantidadePedidosPendentesPorEstado();
+    }
+
+    @Override
+    public PedidoResponse buscarPeloId(long id) {
+        var pedido = pedidoService.buscarPeloId(id);
+        return null;
+    }
+
+    @Override
+    public List<PedidoResponse> buscarPedidosPorCliente(String documento) {
+        var pedidos = pedidoService.buscarPedidosPorCliente(documento);
+        return pedidos.stream().map(pedidoMapper::toResponse).toList();
     }
 
 }

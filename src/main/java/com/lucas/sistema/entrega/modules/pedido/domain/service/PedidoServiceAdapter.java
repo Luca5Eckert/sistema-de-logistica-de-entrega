@@ -9,6 +9,7 @@ import com.lucas.sistema.entrega.modules.pedido.domain.exception.PedidoNullExcep
 import com.lucas.sistema.entrega.modules.pedido.domain.exception.PedidoValidacaoCancelamentoException;
 import com.lucas.sistema.entrega.modules.pedido.domain.port.PedidoRepository;
 
+import java.util.List;
 import java.util.Map;
 
 public class PedidoServiceAdapter implements PedidoService {
@@ -44,6 +45,16 @@ public class PedidoServiceAdapter implements PedidoService {
     @Override
     public Map<String, Long> pegarQuantidadePedidosPendentesPorEstado() {
         return pedidoRepository.pegarQuantidadePedidosPendentesPorEstado();
+    }
+
+    @Override
+    public List<Pedido> buscarPedidosPorCliente(String documento) {
+        return pedidoRepository.buscarPedidosPorCliente(documento);
+    }
+
+    @Override
+    public Pedido buscarPeloId(long id) {
+        return pedidoRepository.buscarPeloId(id).orElseThrow(() -> new PedidoNullException("Não encontrado pedido com id: " + id));
     }
 
     private void verificarPedidoNulo(Pedido pedido){

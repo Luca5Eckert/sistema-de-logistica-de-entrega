@@ -4,6 +4,7 @@ import com.lucas.sistema.entrega.modules.pedido.application.dto.PedidoAdicionarR
 import com.lucas.sistema.entrega.modules.pedido.application.dto.PedidoCancelarRequest;
 import com.lucas.sistema.entrega.modules.pedido.application.dto.PedidoResponse;
 
+import java.util.List;
 import java.util.Map;
 
 public interface PedidoController {
@@ -14,4 +15,7 @@ public interface PedidoController {
 
     Map<String, Long> pegarQuantidadePedidosPendentesPorEstado();
 
+    PedidoResponse buscarPeloId(long id);
+
+    List<PedidoResponse> buscarPedidosPorCliente(String documento);
 }

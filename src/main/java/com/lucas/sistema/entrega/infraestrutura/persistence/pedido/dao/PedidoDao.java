@@ -10,7 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -117,5 +119,65 @@ public class PedidoDao {
             throw new ConexaoDatabaseException("Erro ao conectar ao banco dados");
         }
         return pedidosPendentesPorEstado;
+    }
+
+    public List<Pedido> buscarPedidosPorCliente(String cpfCnpj) {
+        String sql = """
+            SELECT
+                p.id, p.cliente_id, p.data_pedido, p.volume_m3, p.peso_kg, p.status
+            FROM
+                Pedido p
+            JOIN
+                Cliente c ON p.cliente_id = c.id
+            WHERE
+                c.cpf_cnpj = ?;
+            """;
+        List<Pedido> pedidos = new ArrayList<>();
+        try (Connection conn = ConexaoFactory.toInstance();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, cpfCnpj);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    long id = rs.getLong("id");
+                    long clienteId = rs.getLong("cliente_id");
+                    LocalDateTime dataPedido = rs.getTimestamp("data_pedido").toLocalDateTime();
+                    double volumeM3 = rs.getDouble("volume_m3");
+                    double pesoKg = rs.getDouble("peso_kg");
+                    PedidoStatus status = PedidoStatus.valueOf(rs.getString("status"));
+
+                    pedidos.add(new Pedido(id, clienteId, dataPedido, volumeM3, pesoKg, status));
+                }
+            }
+        } catch (SQLException e) {
+            throw new ConexaoDatabaseException("Erro ao buscar pedidos por CPF/CNPJ do cliente.");
+        }
+        return pedidos;
+    }
+
+    public Optional<Pedido> buscarPeloId(long id) {
+        String sql = "SELECT id, cliente_id, data_pedido, volume_m3, peso_kg, status FROM Pedido WHERE id = ?;";
+        try (Connection conn = ConexaoFactory.toInstance();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setLong(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    long pedidoId = rs.getLong("id");
+                    long clienteId = rs.getLong("cliente_id");
+                    LocalDateTime dataPedido = rs.getTimestamp("data_pedido").toLocalDateTime();
+                    double volumeM3 = rs.getDouble("volume_m3");
+                    double pesoKg = rs.getDouble("peso_kg");
+                    PedidoStatus status = PedidoStatus.valueOf(rs.getString("status"));
+
+                    return Optional.of(new Pedido(pedidoId, clienteId, dataPedido, volumeM3, pesoKg, status));
+                }
+            }
+        } catch (SQLException e) {
+            throw new ConexaoDatabaseException("Erro ao buscar pedido pelo ID.");
+        }
+        return Optional.empty();
     }
 }
