@@ -18,9 +18,10 @@ public class MenuEntrega extends Menu {
 
         Menu menu = switch(entrada.toUpperCase()){
             case "1" -> new MenuAdicionarEntrega(getLeitor(), toInstanceController());
-            case "2" -> new MenuAlterarStatusEntrega(getLeitor(), toInstanceController());
-            case "3" -> new MenuExcluirEntrega(getLeitor(), toInstanceController());
-            case "4" -> new MenuEntregaPorCidade(getLeitor(), toInstanceController());
+            case "2" -> new MenuListarEntregas(getLeitor(), toInstanceController());
+            case "3" -> new MenuAlterarStatusEntrega(getLeitor(), toInstanceController());
+            case "4" -> new MenuExcluirEntrega(getLeitor(), toInstanceController());
+            case "5" -> new MenuEntregaPorCidade(getLeitor(), toInstanceController());
             case "S" -> new MenuGeral(getLeitor());
             default -> this;
         };
@@ -35,9 +36,10 @@ public class MenuEntrega extends Menu {
         System.out.println("------------------------------------------------------------------------------");
 
         System.out.println(" 1- Adicionar Entrega");
-        System.out.println(" 2- Atualizar Status de entrega");
-        System.out.println(" 3- Excluir entrega");
-        System.out.println(" 4- Entregas atrasadas por cidade");
+        System.out.println(" 2- Listar entregas");
+        System.out.println(" 3- Atualizar Status de entrega");
+        System.out.println(" 4- Excluir entrega");
+        System.out.println(" 5- Entregas atrasadas por cidade");
         System.out.println("\n S- Sair ");
 
         return getLeitor().nextLine();

@@ -19,9 +19,10 @@ public class MenuPedido extends Menu {
 
         Menu menu = switch (input.toUpperCase()){
             case "1" -> new MenuAdicionarPedido(getLeitor(), PedidoBeansUtil.toInstanceController());
-            case "2" -> new MenuCancelarPedido(getLeitor(), PedidoBeansUtil.toInstanceController());
-            case "3" -> new MenuPedidosPendentesPorEstado(getLeitor(), PedidoBeansUtil.toInstanceController());
-            case "4" -> new MenuBuscarPedidoPorCliente(getLeitor(), PedidoBeansUtil.toInstanceController());
+            case "2" -> new MenuListarPedidos(getLeitor(), PedidoBeansUtil.toInstanceController());
+            case "3" -> new MenuCancelarPedido(getLeitor(), PedidoBeansUtil.toInstanceController());
+            case "4" -> new MenuPedidosPendentesPorEstado(getLeitor(), PedidoBeansUtil.toInstanceController());
+            case "5" -> new MenuBuscarPedidoPorCliente(getLeitor(), PedidoBeansUtil.toInstanceController());
             case "S" -> new MenuGeral(getLeitor());
             default -> this;
         };
@@ -35,9 +36,10 @@ public class MenuPedido extends Menu {
         System.out.println("                               MENU PEDIDO                                    ");
         System.out.println("------------------------------------------------------------------------------");
         System.out.println(" 1- Adicionar");
-        System.out.println(" 2- Cancelar pedido");
-        System.out.println(" 3- Pedidos pendentes por estado");
-        System.out.println(" 4- Buscar pedido por CPF/CNPJ do cliente");
+        System.out.println(" 2- Listar pedidos");
+        System.out.println(" 3- Cancelar pedido");
+        System.out.println(" 4- Pedidos pendentes por estado");
+        System.out.println(" 5- Buscar pedido por CPF/CNPJ do cliente");
 
         System.out.println("\n S- Sair");
 
