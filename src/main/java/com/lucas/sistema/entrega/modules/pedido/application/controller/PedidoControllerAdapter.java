@@ -55,4 +55,9 @@ public class PedidoControllerAdapter implements PedidoController {
         return pedidos.stream().map(pedidoMapper::toResponse).toList();
     }
 
+    @Override
+    public List<PedidoResponse> pegarPedidos() {
+        return pedidoService.pegarPedidos();
+    }
+
 }

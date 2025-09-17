@@ -2,6 +2,7 @@ package com.lucas.sistema.entrega.modules.pedido.domain.service;
 
 import com.lucas.sistema.entrega.modules.cliente.domain.exceptions.ClienteNullException;
 import com.lucas.sistema.entrega.modules.cliente.domain.port.ClienteRepository;
+import com.lucas.sistema.entrega.modules.pedido.application.dto.PedidoResponse;
 import com.lucas.sistema.entrega.modules.pedido.application.port.PedidoService;
 import com.lucas.sistema.entrega.modules.pedido.domain.Pedido;
 import com.lucas.sistema.entrega.modules.pedido.domain.enumerator.PedidoStatus;
@@ -55,6 +56,11 @@ public class PedidoServiceAdapter implements PedidoService {
     @Override
     public Pedido buscarPeloId(long id) {
         return pedidoRepository.buscarPeloId(id).orElseThrow(() -> new PedidoNullException("Não encontrado pedido com id: " + id));
+    }
+
+    @Override
+    public List<PedidoResponse> pegarPedidos() {
+        return pedidoRepository.pegarPedidos();
     }
 
     private void verificarPedidoNulo(Pedido pedido){

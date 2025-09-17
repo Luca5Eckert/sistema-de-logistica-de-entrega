@@ -2,6 +2,7 @@ package com.lucas.sistema.entrega.infraestrutura.persistence.pedido.dao;
 
 import com.lucas.sistema.entrega.infraestrutura.conexao.ConexaoFactory;
 import com.lucas.sistema.entrega.infraestrutura.conexao.exception.ConexaoDatabaseException;
+import com.lucas.sistema.entrega.modules.pedido.application.dto.PedidoResponse;
 import com.lucas.sistema.entrega.modules.pedido.domain.Pedido;
 import com.lucas.sistema.entrega.modules.pedido.domain.enumerator.PedidoStatus;
 
@@ -180,4 +181,29 @@ public class PedidoDao {
         }
         return Optional.empty();
     }
+
+    public List<PedidoResponse> pegarPedidos() {
+        String sql = "SELECT id, cliente_id, data_pedido, volume_m3, peso_kg, status FROM Pedido;";
+        List<PedidoResponse> pedidos = new ArrayList<>();
+        try (Connection conn = ConexaoFactory.toInstance();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                long id = rs.getLong("id");
+                long clienteId = rs.getLong("cliente_id");
+                LocalDateTime dataPedido = rs.getTimestamp("data_pedido").toLocalDateTime();
+                double volumeM3 = rs.getDouble("volume_m3");
+                double pesoKg = rs.getDouble("peso_kg");
+                PedidoStatus status = PedidoStatus.valueOf(rs.getString("status"));
+
+                PedidoResponse pedidoResponse = new PedidoResponse(id, clienteId, dataPedido, volumeM3, pesoKg, status);
+                pedidos.add(pedidoResponse);
+            }
+            return pedidos;
+        } catch (SQLException e) {
+            throw new ConexaoDatabaseException("Erro ao conectar ao banco de dados ao listar pedidos.");
+        }
+    }
+
 }

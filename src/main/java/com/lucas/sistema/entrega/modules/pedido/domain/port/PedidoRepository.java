@@ -1,5 +1,6 @@
 package com.lucas.sistema.entrega.modules.pedido.domain.port;
 
+import com.lucas.sistema.entrega.modules.pedido.application.dto.PedidoResponse;
 import com.lucas.sistema.entrega.modules.pedido.domain.Pedido;
 
 import java.util.List;
@@ -21,4 +22,7 @@ public interface PedidoRepository {
     List<Pedido> buscarPedidosPorCliente(String cpfCnpj);
 
     Optional<Pedido> buscarPeloId(long id);
+
+    List<PedidoResponse> pegarPedidos();
+
 }

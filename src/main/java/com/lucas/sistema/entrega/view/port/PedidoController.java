@@ -17,5 +17,8 @@ public interface PedidoController {
 
     PedidoResponse buscarPeloId(long id);
 
-    List<PedidoResponse> buscarPedidosPorCliente(String documento);
+    List<PedidoResponse> buscarPedidosPorCliente(String cpfCnpj);
+
+    List<PedidoResponse> pegarPedidos();
+
 }

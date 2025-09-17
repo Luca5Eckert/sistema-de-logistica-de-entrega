@@ -1,6 +1,7 @@
 package com.lucas.sistema.entrega.infraestrutura.persistence.pedido.repository;
 
 import com.lucas.sistema.entrega.infraestrutura.persistence.pedido.dao.PedidoDao;
+import com.lucas.sistema.entrega.modules.pedido.application.dto.PedidoResponse;
 import com.lucas.sistema.entrega.modules.pedido.domain.Pedido;
 import com.lucas.sistema.entrega.modules.pedido.domain.port.PedidoRepository;
 
@@ -49,5 +50,10 @@ public class PedidoRepositoryAdapter implements PedidoRepository {
     @Override
     public Optional<Pedido> buscarPeloId(long id) {
         return pedidoDAO.buscarPeloId(id);
+    }
+
+    @Override
+    public List<PedidoResponse> pegarPedidos() {
+        return pedidoDAO.pegarPedidos();
     }
 }
