@@ -3,6 +3,7 @@ package com.lucas.sistema.entrega.view.menu;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.cliente.MenuCliente;
 import com.lucas.sistema.entrega.view.menu.entrega.MenuEntrega;
+import com.lucas.sistema.entrega.view.menu.historicoentrega.MenuHistoricoEntrega;
 import com.lucas.sistema.entrega.view.menu.motorista.MenuMotorista;
 import com.lucas.sistema.entrega.view.menu.pedido.MenuPedido;
 
@@ -22,6 +23,7 @@ public class MenuGeral extends Menu {
             case "2" -> new MenuMotorista(getLeitor());
             case "3" -> new MenuPedido(getLeitor());
             case "4" -> new MenuEntrega(getLeitor());
+            case "5" -> new MenuHistoricoEntrega(getLeitor());
             case "S" -> null;
             default -> this;
         };
@@ -39,7 +41,6 @@ public class MenuGeral extends Menu {
         System.out.println(" 3- Pedido");
         System.out.println(" 4- Entrega");
         System.out.println(" 5- Evento de entrega");
-        System.out.println(" 6- Relatório");
         System.out.println("\n S- Sair");
 
         return getLeitor().nextLine();
