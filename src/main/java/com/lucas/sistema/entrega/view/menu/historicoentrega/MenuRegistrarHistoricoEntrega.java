@@ -26,7 +26,7 @@ public class MenuRegistrarHistoricoEntrega extends Menu {
         var historicoEntrega = chamarMenu();
 
         if(historicoEntrega == null){
-            setProximoMenu(new MenuMotorista(getLeitor()));
+            setProximoMenu(new MenuHistoricoEntrega(getLeitor()));
             return;
         }
 
