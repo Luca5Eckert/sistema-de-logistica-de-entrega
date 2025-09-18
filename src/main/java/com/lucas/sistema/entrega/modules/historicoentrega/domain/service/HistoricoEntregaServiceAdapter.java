@@ -21,7 +21,7 @@ public class HistoricoEntregaServiceAdapter implements HistoricoEntregaService {
     @Override
     public void adicionar(HistoricoEntrega historicoEntrega) {
 
-        entregaRepository.buscarPorId(historicoEntrega.getId()).orElseThrow(() -> new EntregaNullException(" Entrega não encontrado com id: " + historicoEntrega.getEntregaId()));
+        entregaRepository.buscarPorId(historicoEntrega.getEntregaId()).orElseThrow(() -> new EntregaNullException(" Entrega não encontrado com id: " + historicoEntrega.getEntregaId()));
 
         historicoEntregaRepository.adicionar(historicoEntrega);
     }

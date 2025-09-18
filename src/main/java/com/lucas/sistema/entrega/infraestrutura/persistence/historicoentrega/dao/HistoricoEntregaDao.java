@@ -32,7 +32,7 @@ public class HistoricoEntregaDao {
     public List<HistoricoEntrega> pegarEventos() {
         String consulta = """
                 SELECT id, entrega_id, data_evento, descricao
-                FROM HistoricoEntrega
+                FROM HistoricoEntrega;
                 """;
         List<HistoricoEntrega> eventos = new ArrayList<>();
 
@@ -60,11 +60,11 @@ public class HistoricoEntregaDao {
 
     public List<HistoricoEntrega> pegarHistoricoDeEntrega(long idEntrega) {
         String consulta = """
-                SELECT FROM id, data_evento, descricao
+                SELECT he.id, he.data_evento, he.descricao
                 FROM HistoricoEntrega he
-                WHERE e.id = ?
-                JOIN Entrega e ON e.id == he.entrega_id 
-                ORDER BY data_evento DESC
+                JOIN Entrega e ON e.id = he.entrega_id 
+                WHERE he.entrega_id = ?
+                ORDER BY he.data_evento DESC;
                 """;
         List<HistoricoEntrega> eventos = new ArrayList<>();
 
