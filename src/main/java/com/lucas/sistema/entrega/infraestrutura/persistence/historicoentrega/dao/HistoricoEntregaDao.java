@@ -80,7 +80,7 @@ public class HistoricoEntregaDao {
                 LocalDateTime dataEvento = resultSet.getTimestamp("data_evento").toLocalDateTime();
                 String descricao = resultSet.getString("descricao");
 
-                HistoricoEntrega evento = new HistoricoEntrega(id, dataEvento, descricao);
+                HistoricoEntrega evento = new HistoricoEntrega(id, idEntrega, dataEvento, descricao);
                 eventos.add(evento);
             }
 

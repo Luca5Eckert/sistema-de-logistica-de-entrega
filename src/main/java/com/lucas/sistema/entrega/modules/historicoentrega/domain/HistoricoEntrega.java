@@ -26,6 +26,8 @@ public class HistoricoEntrega {
         this.descricao = descricao;
     }
 
+
+
     public long getId() {
         return id;
     }
