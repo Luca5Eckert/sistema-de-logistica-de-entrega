@@ -1,7 +1,6 @@
 package com.lucas.sistema.entrega.modules.entrega.domain.port;
 
 import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteEntregaResponse;
-import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
 import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
 
 import java.util.List;

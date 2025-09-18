@@ -6,6 +6,8 @@ import com.lucas.sistema.entrega.modules.historicoentrega.application.port.Histo
 import com.lucas.sistema.entrega.modules.historicoentrega.domain.HistoricoEntrega;
 import com.lucas.sistema.entrega.modules.historicoentrega.domain.port.HistoricoEntregaRepository;
 
+import java.util.List;
+
 public class HistoricoEntregaServiceAdapter implements HistoricoEntregaService {
 
     private final HistoricoEntregaRepository historicoEntregaRepository;
@@ -23,4 +25,10 @@ public class HistoricoEntregaServiceAdapter implements HistoricoEntregaService {
 
         historicoEntregaRepository.adicionar(historicoEntrega);
     }
+
+    @Override
+    public List<HistoricoEntrega> pegarEventos() {
+        return historicoEntregaRepository.pegarEventos();
+    }
+
 }

@@ -6,6 +6,8 @@ import com.lucas.sistema.entrega.modules.historicoentrega.application.port.Histo
 import com.lucas.sistema.entrega.modules.historicoentrega.application.port.HistoricoEntregaService;
 import com.lucas.sistema.entrega.view.port.HistoricoEntregaController;
 
+import java.util.List;
+
 public class HistoricoEntregaControllerAdapter implements HistoricoEntregaController {
 
     private final HistoricoEntregaService historicoEntregaService;
@@ -27,6 +29,12 @@ public class HistoricoEntregaControllerAdapter implements HistoricoEntregaContro
 
     }
 
+    @Override
+    List<HistoricoEntregaResponse> pegarEventos(){
+        var eventos = historicoEntregaService.pegarEventos();
+
+        return eventos.stream().map(historicoEntregaMapper::toResponse).toList();
+    }
 
 
 }
