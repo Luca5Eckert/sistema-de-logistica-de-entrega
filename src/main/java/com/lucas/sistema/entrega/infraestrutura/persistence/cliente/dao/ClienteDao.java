@@ -2,7 +2,7 @@ package com.lucas.sistema.entrega.infraestrutura.persistence.cliente.dao;
 
 import com.lucas.sistema.entrega.infraestrutura.conexao.ConexaoFactory;
 import com.lucas.sistema.entrega.infraestrutura.conexao.exception.ConexaoDatabaseException;
-import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
+import com.lucas.sistema.entrega.modulo.cliente.domain.Cliente;
 
 import java.util.ArrayList;
 import java.util.List;

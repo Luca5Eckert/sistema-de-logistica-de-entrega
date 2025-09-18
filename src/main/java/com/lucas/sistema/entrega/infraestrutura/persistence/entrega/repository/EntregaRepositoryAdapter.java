@@ -1,10 +1,9 @@
 package com.lucas.sistema.entrega.infraestrutura.persistence.entrega.repository;
 
 import com.lucas.sistema.entrega.infraestrutura.persistence.entrega.dao.EntregaDao;
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteEntregaResponse;
-import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
-import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
-import com.lucas.sistema.entrega.modules.entrega.domain.port.EntregaRepository;
+import com.lucas.sistema.entrega.modulo.cliente.application.dto.ClienteEntregaResponse;
+import com.lucas.sistema.entrega.modulo.entrega.domain.Entrega;
+import com.lucas.sistema.entrega.modulo.entrega.domain.port.EntregaRepository;
 
 import java.util.List;
 import java.util.Map;

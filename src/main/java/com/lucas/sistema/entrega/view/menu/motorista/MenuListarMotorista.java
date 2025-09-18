@@ -1,6 +1,6 @@
 package com.lucas.sistema.entrega.view.menu.motorista;
 
-import com.lucas.sistema.entrega.modules.motorista.application.dto.MotoristaResponse;
+import com.lucas.sistema.entrega.modulo.motorista.application.dto.MotoristaResponse;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.port.MotoristaController;

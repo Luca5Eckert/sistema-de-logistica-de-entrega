@@ -1,9 +1,9 @@
 package com.lucas.sistema.entrega.infraestrutura.persistence.motorista.mapper;
 
-import com.lucas.sistema.entrega.modules.motorista.application.dto.MotoristaAdicionarRequest;
-import com.lucas.sistema.entrega.modules.motorista.application.dto.MotoristaResponse;
-import com.lucas.sistema.entrega.modules.motorista.application.port.MotoristaMapper;
-import com.lucas.sistema.entrega.modules.motorista.domain.Motorista;
+import com.lucas.sistema.entrega.modulo.motorista.application.dto.MotoristaAdicionarRequest;
+import com.lucas.sistema.entrega.modulo.motorista.application.dto.MotoristaResponse;
+import com.lucas.sistema.entrega.modulo.motorista.application.port.MotoristaMapper;
+import com.lucas.sistema.entrega.modulo.motorista.domain.Motorista;
 
 public class MotoristaMapperAdapter implements MotoristaMapper {
 

@@ -2,7 +2,7 @@ package com.lucas.sistema.entrega.infraestrutura.persistence.historicoentrega.da
 
 import com.lucas.sistema.entrega.infraestrutura.conexao.ConexaoFactory;
 import com.lucas.sistema.entrega.infraestrutura.conexao.exception.ConexaoDatabaseException;
-import com.lucas.sistema.entrega.modules.historicoentrega.domain.HistoricoEntrega;
+import com.lucas.sistema.entrega.modulo.historicoentrega.domain.HistoricoEntrega;
 
 import java.sql.*;
 import java.time.LocalDateTime;

@@ -2,7 +2,7 @@ package com.lucas.sistema.entrega.infraestrutura.persistence.motorista.dao;
 
 import com.lucas.sistema.entrega.infraestrutura.conexao.ConexaoFactory;
 import com.lucas.sistema.entrega.infraestrutura.conexao.exception.ConexaoDatabaseException;
-import com.lucas.sistema.entrega.modules.motorista.domain.Motorista;
+import com.lucas.sistema.entrega.modulo.motorista.domain.Motorista;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

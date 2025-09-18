@@ -1,10 +1,10 @@
 package com.lucas.sistema.entrega.infraestrutura.persistence.pedido.mapper;
 
-import com.lucas.sistema.entrega.modules.pedido.application.dto.PedidoAdicionarRequest;
-import com.lucas.sistema.entrega.modules.pedido.application.dto.PedidoCancelarRequest;
-import com.lucas.sistema.entrega.modules.pedido.application.dto.PedidoResponse;
-import com.lucas.sistema.entrega.modules.pedido.application.port.PedidoMapper;
-import com.lucas.sistema.entrega.modules.pedido.domain.Pedido;
+import com.lucas.sistema.entrega.modulo.pedido.application.dto.PedidoAdicionarRequest;
+import com.lucas.sistema.entrega.modulo.pedido.application.dto.PedidoCancelarRequest;
+import com.lucas.sistema.entrega.modulo.pedido.application.dto.PedidoResponse;
+import com.lucas.sistema.entrega.modulo.pedido.application.port.PedidoMapper;
+import com.lucas.sistema.entrega.modulo.pedido.domain.Pedido;
 
 public class PedidoMapperAdapter implements PedidoMapper {
 

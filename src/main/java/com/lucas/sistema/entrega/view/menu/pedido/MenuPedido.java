@@ -1,7 +1,6 @@
 package com.lucas.sistema.entrega.view.menu.pedido;
 
 import com.lucas.sistema.entrega.infraestrutura.utils.beans.PedidoBeansUtil;
-import com.lucas.sistema.entrega.modules.pedido.domain.Pedido;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.menu.MenuGeral;

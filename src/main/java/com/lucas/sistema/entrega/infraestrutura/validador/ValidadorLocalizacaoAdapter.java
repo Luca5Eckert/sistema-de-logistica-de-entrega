@@ -3,7 +3,7 @@ package com.lucas.sistema.entrega.infraestrutura.validador;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lucas.sistema.entrega.infraestrutura.conexao.exception.ConexaoApiException;
-import com.lucas.sistema.entrega.modules.cliente.domain.port.ValidadorLocalizacao;
+import com.lucas.sistema.entrega.modulo.cliente.domain.port.ValidadorLocalizacao;
 
 import java.io.IOException;
 import java.net.URI;

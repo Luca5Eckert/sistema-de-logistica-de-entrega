@@ -1,7 +1,7 @@
 package com.lucas.sistema.entrega.view.menu.motorista;
 
-import com.lucas.sistema.entrega.modules.motorista.application.controller.MotoristaControllerAdapter;
-import com.lucas.sistema.entrega.modules.motorista.application.dto.MotoristaAdicionarRequest;
+import com.lucas.sistema.entrega.modulo.motorista.application.controller.MotoristaControllerAdapter;
+import com.lucas.sistema.entrega.modulo.motorista.application.dto.MotoristaAdicionarRequest;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 

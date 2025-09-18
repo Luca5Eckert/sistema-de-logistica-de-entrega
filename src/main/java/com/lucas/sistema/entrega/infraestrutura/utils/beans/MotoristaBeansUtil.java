@@ -4,11 +4,11 @@ package com.lucas.sistema.entrega.infraestrutura.utils.beans;
 import com.lucas.sistema.entrega.infraestrutura.persistence.motorista.dao.MotoristaDao;
 import com.lucas.sistema.entrega.infraestrutura.persistence.motorista.mapper.MotoristaMapperAdapter;
 import com.lucas.sistema.entrega.infraestrutura.persistence.motorista.repository.MotoristaRepositoryAdapter;
-import com.lucas.sistema.entrega.modules.motorista.application.controller.MotoristaControllerAdapter;
-import com.lucas.sistema.entrega.modules.motorista.application.port.MotoristaMapper;
-import com.lucas.sistema.entrega.modules.motorista.application.port.MotoristaService;
-import com.lucas.sistema.entrega.modules.motorista.domain.port.MotoristaRepository;
-import com.lucas.sistema.entrega.modules.motorista.domain.service.MotoristaServiceAdapter;
+import com.lucas.sistema.entrega.modulo.motorista.application.controller.MotoristaControllerAdapter;
+import com.lucas.sistema.entrega.modulo.motorista.application.port.MotoristaMapper;
+import com.lucas.sistema.entrega.modulo.motorista.application.port.MotoristaService;
+import com.lucas.sistema.entrega.modulo.motorista.domain.port.MotoristaRepository;
+import com.lucas.sistema.entrega.modulo.motorista.domain.service.MotoristaServiceAdapter;
 
 public class MotoristaBeansUtil {
 

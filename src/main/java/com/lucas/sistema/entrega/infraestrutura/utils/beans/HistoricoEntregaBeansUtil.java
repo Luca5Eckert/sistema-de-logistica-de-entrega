@@ -3,11 +3,11 @@ package com.lucas.sistema.entrega.infraestrutura.utils.beans;
 import com.lucas.sistema.entrega.infraestrutura.persistence.historicoentrega.dao.HistoricoEntregaDao;
 import com.lucas.sistema.entrega.infraestrutura.persistence.historicoentrega.mapper.HistoricoEntregaMapperAdapter;
 import com.lucas.sistema.entrega.infraestrutura.persistence.historicoentrega.repository.HistoricoEntregaRepositoryAdapter;
-import com.lucas.sistema.entrega.modules.historicoentrega.application.controller.HistoricoEntregaControllerAdapter;
-import com.lucas.sistema.entrega.modules.historicoentrega.application.port.HistoricoEntregaMapper;
-import com.lucas.sistema.entrega.modules.historicoentrega.application.port.HistoricoEntregaService;
-import com.lucas.sistema.entrega.modules.historicoentrega.domain.port.HistoricoEntregaRepository;
-import com.lucas.sistema.entrega.modules.historicoentrega.domain.service.HistoricoEntregaServiceAdapter;
+import com.lucas.sistema.entrega.modulo.historicoentrega.application.controller.HistoricoEntregaControllerAdapter;
+import com.lucas.sistema.entrega.modulo.historicoentrega.application.port.HistoricoEntregaMapper;
+import com.lucas.sistema.entrega.modulo.historicoentrega.application.port.HistoricoEntregaService;
+import com.lucas.sistema.entrega.modulo.historicoentrega.domain.port.HistoricoEntregaRepository;
+import com.lucas.sistema.entrega.modulo.historicoentrega.domain.service.HistoricoEntregaServiceAdapter;
 import com.lucas.sistema.entrega.view.port.HistoricoEntregaController;
 
 public class HistoricoEntregaBeansUtil {

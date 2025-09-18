@@ -1,6 +1,6 @@
 package com.lucas.sistema.entrega.view.menu.historicoentrega;
 
-import com.lucas.sistema.entrega.modules.historicoentrega.application.dto.EventoEntregaResponse;
+import com.lucas.sistema.entrega.modulo.historicoentrega.application.dto.EventoEntregaResponse;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.port.HistoricoEntregaController;

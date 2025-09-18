@@ -1,9 +1,9 @@
 package com.lucas.sistema.entrega.infraestrutura.persistence.cliente.mapper;
 
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteAdicionarRequest;
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse;
-import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
-import com.lucas.sistema.entrega.modules.cliente.domain.port.ClienteMapper;
+import com.lucas.sistema.entrega.modulo.cliente.application.dto.ClienteAdicionarRequest;
+import com.lucas.sistema.entrega.modulo.cliente.application.dto.ClienteResponse;
+import com.lucas.sistema.entrega.modulo.cliente.domain.Cliente;
+import com.lucas.sistema.entrega.modulo.cliente.domain.port.ClienteMapper;
 
 public class ClienteMapperAdapter implements ClienteMapper {
 

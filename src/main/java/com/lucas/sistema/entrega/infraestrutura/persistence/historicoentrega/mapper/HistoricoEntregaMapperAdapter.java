@@ -1,10 +1,10 @@
 package com.lucas.sistema.entrega.infraestrutura.persistence.historicoentrega.mapper;
 
-import com.lucas.sistema.entrega.modules.historicoentrega.application.dto.EventoEntregaResponse;
-import com.lucas.sistema.entrega.modules.historicoentrega.application.dto.HistoricoEntregaAdicionarRequest;
-import com.lucas.sistema.entrega.modules.historicoentrega.application.dto.HistoricoEntregaResponse;
-import com.lucas.sistema.entrega.modules.historicoentrega.application.port.HistoricoEntregaMapper;
-import com.lucas.sistema.entrega.modules.historicoentrega.domain.HistoricoEntrega;
+import com.lucas.sistema.entrega.modulo.historicoentrega.application.dto.EventoEntregaResponse;
+import com.lucas.sistema.entrega.modulo.historicoentrega.application.dto.HistoricoEntregaAdicionarRequest;
+import com.lucas.sistema.entrega.modulo.historicoentrega.application.dto.HistoricoEntregaResponse;
+import com.lucas.sistema.entrega.modulo.historicoentrega.application.port.HistoricoEntregaMapper;
+import com.lucas.sistema.entrega.modulo.historicoentrega.domain.HistoricoEntrega;
 
 public class HistoricoEntregaMapperAdapter implements HistoricoEntregaMapper {
 

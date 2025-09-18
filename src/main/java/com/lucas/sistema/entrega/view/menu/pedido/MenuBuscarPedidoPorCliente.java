@@ -1,11 +1,8 @@
 package com.lucas.sistema.entrega.view.menu.pedido;
 
-import com.lucas.sistema.entrega.modules.pedido.application.dto.PedidoResponse;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.port.PedidoController;
-
-import java.util.List;
 
 import static com.lucas.sistema.entrega.infraestrutura.utils.ConsoleUtil.imprimir;
 import static com.lucas.sistema.entrega.infraestrutura.utils.ConsoleUtil.imprimirLista;

@@ -2,9 +2,9 @@ package com.lucas.sistema.entrega.infraestrutura.persistence.pedido.dao;
 
 import com.lucas.sistema.entrega.infraestrutura.conexao.ConexaoFactory;
 import com.lucas.sistema.entrega.infraestrutura.conexao.exception.ConexaoDatabaseException;
-import com.lucas.sistema.entrega.modules.pedido.application.dto.PedidoResponse;
-import com.lucas.sistema.entrega.modules.pedido.domain.Pedido;
-import com.lucas.sistema.entrega.modules.pedido.domain.enumerator.PedidoStatus;
+import com.lucas.sistema.entrega.modulo.pedido.application.dto.PedidoResponse;
+import com.lucas.sistema.entrega.modulo.pedido.domain.Pedido;
+import com.lucas.sistema.entrega.modulo.pedido.domain.enumerator.PedidoStatus;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

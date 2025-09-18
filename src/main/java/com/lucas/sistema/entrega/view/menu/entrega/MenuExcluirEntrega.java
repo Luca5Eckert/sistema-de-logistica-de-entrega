@@ -1,6 +1,6 @@
 package com.lucas.sistema.entrega.view.menu.entrega;
 
-import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaExcluirRequest;
+import com.lucas.sistema.entrega.modulo.entrega.application.dto.EntregaExcluirRequest;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.port.EntregaController;

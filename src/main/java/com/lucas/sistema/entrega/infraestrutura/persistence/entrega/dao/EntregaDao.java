@@ -2,10 +2,9 @@ package com.lucas.sistema.entrega.infraestrutura.persistence.entrega.dao;
 
 import com.lucas.sistema.entrega.infraestrutura.conexao.ConexaoFactory;
 import com.lucas.sistema.entrega.infraestrutura.conexao.exception.ConexaoDatabaseException;
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteEntregaResponse;
-import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
-import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
-import com.lucas.sistema.entrega.modules.entrega.domain.enumerator.EntregaStatus;
+import com.lucas.sistema.entrega.modulo.cliente.application.dto.ClienteEntregaResponse;
+import com.lucas.sistema.entrega.modulo.entrega.domain.Entrega;
+import com.lucas.sistema.entrega.modulo.entrega.domain.enumerator.EntregaStatus;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,6 +1,6 @@
 package com.lucas.sistema.entrega.view.menu.cliente;
 
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse;
+import com.lucas.sistema.entrega.modulo.cliente.application.dto.ClienteResponse;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.port.ClienteController;

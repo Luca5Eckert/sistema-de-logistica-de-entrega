@@ -1,0 +1,69 @@
+package com.lucas.sistema.entrega.modulo.pedido.domain.service;
+
+import com.lucas.sistema.entrega.modulo.cliente.domain.exceptions.ClienteNullException;
+import com.lucas.sistema.entrega.modulo.cliente.domain.port.ClienteRepository;
+import com.lucas.sistema.entrega.modulo.pedido.application.dto.PedidoResponse;
+import com.lucas.sistema.entrega.modulo.pedido.application.port.PedidoService;
+import com.lucas.sistema.entrega.modulo.pedido.domain.Pedido;
+import com.lucas.sistema.entrega.modulo.pedido.domain.enumerator.PedidoStatus;
+import com.lucas.sistema.entrega.modulo.pedido.domain.exception.PedidoNullException;
+import com.lucas.sistema.entrega.modulo.pedido.domain.port.PedidoRepository;
+
+import java.util.List;
+import java.util.Map;
+
+public class PedidoServiceAdapter implements PedidoService {
+
+    private final PedidoRepository pedidoRepository;
+    private final ClienteRepository clienteRepository;
+
+    public PedidoServiceAdapter(PedidoRepository pedidoRepository, ClienteRepository clienteRepository) {
+        this.pedidoRepository = pedidoRepository;
+        this.clienteRepository = clienteRepository;
+    }
+
+    @Override
+    public void adicionarPedido(Pedido pedido) {
+        verificarPedidoNulo(pedido);
+
+        if(clienteRepository.buscarPorId(pedido.getClienteId()).isEmpty()) throw new ClienteNullException(" Cliente não encontrado com id: " + pedido.getClienteId());
+
+        pedidoRepository.adicionar(pedido);
+    }
+
+    @Override
+    public Pedido cancelarPedido(long pedidoId) {
+        Pedido pedido = pedidoRepository.buscar(pedidoId).orElseThrow(() -> new PedidoNullException("Não encontrado pedido com id: " + pedidoId));
+
+        pedido.setStatus(PedidoStatus.CANCELADO);
+
+        pedidoRepository.salvar(pedido);
+
+        return pedido;
+    }
+
+    @Override
+    public Map<String, Long> pegarQuantidadePedidosPendentesPorEstado() {
+        return pedidoRepository.pegarQuantidadePedidosPendentesPorEstado();
+    }
+
+    @Override
+    public List<Pedido> buscarPedidosPorCliente(String documento) {
+        return pedidoRepository.buscarPedidosPorCliente(documento);
+    }
+
+    @Override
+    public Pedido buscarPeloId(long id) {
+        return pedidoRepository.buscarPeloId(id).orElseThrow(() -> new PedidoNullException("Não encontrado pedido com id: " + id));
+    }
+
+    @Override
+    public List<PedidoResponse> pegarPedidos() {
+        return pedidoRepository.pegarPedidos();
+    }
+
+    private void verificarPedidoNulo(Pedido pedido){
+        if(pedido == null) throw new PedidoNullException("O Pedido não pode estar vazio");
+    }
+
+}

@@ -1,10 +1,10 @@
 package com.lucas.sistema.entrega.view.port;
 
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteEntregaResponse;
-import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAdicionarRequest;
-import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAtualizarStatusRequest;
-import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaExcluirRequest;
-import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaResponse;
+import com.lucas.sistema.entrega.modulo.cliente.application.dto.ClienteEntregaResponse;
+import com.lucas.sistema.entrega.modulo.entrega.application.dto.EntregaAdicionarRequest;
+import com.lucas.sistema.entrega.modulo.entrega.application.dto.EntregaAtualizarStatusRequest;
+import com.lucas.sistema.entrega.modulo.entrega.application.dto.EntregaExcluirRequest;
+import com.lucas.sistema.entrega.modulo.entrega.application.dto.EntregaResponse;
 
 import java.util.List;
 import java.util.Map;

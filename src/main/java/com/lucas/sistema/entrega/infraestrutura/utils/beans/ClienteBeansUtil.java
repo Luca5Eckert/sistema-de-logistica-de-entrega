@@ -4,12 +4,12 @@ import com.lucas.sistema.entrega.infraestrutura.persistence.cliente.dao.ClienteD
 import com.lucas.sistema.entrega.infraestrutura.persistence.cliente.mapper.ClienteMapperAdapter;
 import com.lucas.sistema.entrega.infraestrutura.persistence.cliente.repository.ClienteRepositoryAdapter;
 import com.lucas.sistema.entrega.infraestrutura.validador.ValidadorLocalizacaoAdapter;
-import com.lucas.sistema.entrega.modules.cliente.application.controller.ClienteControllerAdapter;
-import com.lucas.sistema.entrega.modules.cliente.application.port.ClienteService;
-import com.lucas.sistema.entrega.modules.cliente.domain.port.ClienteMapper;
-import com.lucas.sistema.entrega.modules.cliente.domain.port.ClienteRepository;
-import com.lucas.sistema.entrega.modules.cliente.domain.port.ValidadorLocalizacao;
-import com.lucas.sistema.entrega.modules.cliente.domain.service.ClienteServiceAdapter;
+import com.lucas.sistema.entrega.modulo.cliente.application.controller.ClienteControllerAdapter;
+import com.lucas.sistema.entrega.modulo.cliente.application.port.ClienteService;
+import com.lucas.sistema.entrega.modulo.cliente.domain.port.ClienteMapper;
+import com.lucas.sistema.entrega.modulo.cliente.domain.port.ClienteRepository;
+import com.lucas.sistema.entrega.modulo.cliente.domain.port.ValidadorLocalizacao;
+import com.lucas.sistema.entrega.modulo.cliente.domain.service.ClienteServiceAdapter;
 import com.lucas.sistema.entrega.view.port.ClienteController;
 
 public class ClienteBeansUtil {

@@ -1,9 +1,9 @@
 package com.lucas.sistema.entrega.infraestrutura.persistence.entrega.mapper;
 
-import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaAdicionarRequest;
-import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaResponse;
-import com.lucas.sistema.entrega.modules.entrega.application.port.EntregaMapper;
-import com.lucas.sistema.entrega.modules.entrega.domain.Entrega;
+import com.lucas.sistema.entrega.modulo.entrega.application.dto.EntregaAdicionarRequest;
+import com.lucas.sistema.entrega.modulo.entrega.application.dto.EntregaResponse;
+import com.lucas.sistema.entrega.modulo.entrega.application.port.EntregaMapper;
+import com.lucas.sistema.entrega.modulo.entrega.domain.Entrega;
 
 public class EntregaMapperAdapter implements EntregaMapper {
 

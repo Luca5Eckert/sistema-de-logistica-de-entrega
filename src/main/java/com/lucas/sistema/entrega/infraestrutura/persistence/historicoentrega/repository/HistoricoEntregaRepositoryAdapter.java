@@ -1,8 +1,8 @@
 package com.lucas.sistema.entrega.infraestrutura.persistence.historicoentrega.repository;
 
 import com.lucas.sistema.entrega.infraestrutura.persistence.historicoentrega.dao.HistoricoEntregaDao;
-import com.lucas.sistema.entrega.modules.historicoentrega.domain.HistoricoEntrega;
-import com.lucas.sistema.entrega.modules.historicoentrega.domain.port.HistoricoEntregaRepository;
+import com.lucas.sistema.entrega.modulo.historicoentrega.domain.HistoricoEntrega;
+import com.lucas.sistema.entrega.modulo.historicoentrega.domain.port.HistoricoEntregaRepository;
 
 import java.util.List;
 

@@ -1,0 +1,23 @@
+package com.lucas.sistema.entrega.modulo.historicoentrega.application.dto;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public record HistoricoEntregaResponse(long id, long entregaId, LocalDateTime dataEvento, String descricao) {
+
+    public String exibirDados() {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataTexto = dataEvento.format(formatter);
+
+        return " | Entrega Id: " + entregaId + " | Data evento: " + dataTexto + " | Descrição: " + descricao;
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataTexto = dataEvento.format(formatter);
+
+        return "Id: " + id + " | Entrega Id: " + entregaId + " | Data evento: " + dataTexto + " | Descrição: " + descricao;
+    }
+}

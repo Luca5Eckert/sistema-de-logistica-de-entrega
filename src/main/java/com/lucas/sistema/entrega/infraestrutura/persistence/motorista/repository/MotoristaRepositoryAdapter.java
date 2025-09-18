@@ -1,9 +1,9 @@
 package com.lucas.sistema.entrega.infraestrutura.persistence.motorista.repository;
 
 import com.lucas.sistema.entrega.infraestrutura.persistence.motorista.dao.MotoristaDao;
-import com.lucas.sistema.entrega.modules.motorista.domain.port.MotoristaRepository;
+import com.lucas.sistema.entrega.modulo.motorista.domain.port.MotoristaRepository;
 
-import com.lucas.sistema.entrega.modules.motorista.domain.Motorista;
+import com.lucas.sistema.entrega.modulo.motorista.domain.Motorista;
 
 import java.util.List;
 import java.util.Optional;

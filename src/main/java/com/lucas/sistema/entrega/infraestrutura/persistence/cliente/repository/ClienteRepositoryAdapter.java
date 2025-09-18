@@ -1,8 +1,8 @@
 package com.lucas.sistema.entrega.infraestrutura.persistence.cliente.repository;
 
 import com.lucas.sistema.entrega.infraestrutura.persistence.cliente.dao.ClienteDao;
-import com.lucas.sistema.entrega.modules.cliente.domain.Cliente;
-import com.lucas.sistema.entrega.modules.cliente.domain.port.ClienteRepository;
+import com.lucas.sistema.entrega.modulo.cliente.domain.Cliente;
+import com.lucas.sistema.entrega.modulo.cliente.domain.port.ClienteRepository;
 
 import java.util.List;
 import java.util.Optional;

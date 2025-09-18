@@ -1,15 +1,11 @@
 package com.lucas.sistema.entrega.view.menu.cliente;
 
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteExcluirRequest;
-import com.lucas.sistema.entrega.modules.cliente.application.dto.ClienteResponse;
+import com.lucas.sistema.entrega.modulo.cliente.application.dto.ClienteExcluirRequest;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.port.ClienteController;
 
-import java.util.List;
-
 import static com.lucas.sistema.entrega.infraestrutura.utils.ConsoleUtil.imprimir;
-import static com.lucas.sistema.entrega.infraestrutura.utils.ConsoleUtil.imprimirLista;
 
 public class MenuExcluirCliente extends Menu {
 
