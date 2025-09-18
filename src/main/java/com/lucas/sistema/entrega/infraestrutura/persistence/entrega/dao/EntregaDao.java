@@ -12,11 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class EntregaDao {
 
@@ -55,7 +51,10 @@ public class EntregaDao {
                     long pedidoId = rs.getLong("pedido_id");
                     long motoristaId = rs.getLong("motorista_id");
                     LocalDateTime dataSaida = rs.getTimestamp("data_saida").toLocalDateTime();
-                    LocalDateTime dataEntrega = rs.getTimestamp("data_entrega").toLocalDateTime();
+
+                    java.sql.Timestamp tsDataEntrega = rs.getTimestamp("data_entrega");
+                    LocalDateTime dataEntrega = (tsDataEntrega != null) ? tsDataEntrega.toLocalDateTime() : null;
+
                     EntregaStatus status = EntregaStatus.valueOf(rs.getString("status"));
 
                     Entrega entrega = new Entrega(entregaId, pedidoId, motoristaId, dataSaida, dataEntrega, status);
@@ -80,7 +79,10 @@ public class EntregaDao {
             ps.setLong(1, entrega.getPedidoId());
             ps.setLong(2, entrega.getMotoristaId());
             ps.setTimestamp(3, Timestamp.valueOf(entrega.getDataSaida()));
-            ps.setTimestamp(4, Timestamp.valueOf(entrega.getDataEntrega()));
+
+            Timestamp dataEntrega = entrega.getDataEntrega() != null ? Timestamp.valueOf(entrega.getDataEntrega()) : null;
+            ps.setTimestamp(4, dataEntrega);
+
             ps.setString(5, entrega.getStatus().name());
             ps.setLong(6, entrega.getId());
             ps.executeUpdate();
@@ -105,7 +107,10 @@ public class EntregaDao {
                 long pedidoId = rs.getLong("pedido_id");
                 long motoristaId = rs.getLong("motorista_id");
                 LocalDateTime dataSaida = rs.getTimestamp("data_saida").toLocalDateTime();
-                LocalDateTime dataEntrega = rs.getTimestamp("data_entrega").toLocalDateTime();
+
+                java.sql.Timestamp tsDataEntrega = rs.getTimestamp("data_entrega");
+                LocalDateTime dataEntrega = (tsDataEntrega != null) ? tsDataEntrega.toLocalDateTime() : null;
+
                 EntregaStatus status = EntregaStatus.valueOf(rs.getString("status"));
 
                 Entrega entrega = new Entrega(id, pedidoId, motoristaId, dataSaida, dataEntrega, status);
@@ -206,7 +211,7 @@ public class EntregaDao {
             JOIN
                 Cliente c ON p.cliente_id = c.id
             WHERE
-                e.status = 'EM_ROTA'
+                e.status = 'ATRASADA'
             GROUP BY
                 c.cidade;
             """;
