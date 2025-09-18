@@ -4,6 +4,7 @@ import com.lucas.sistema.entrega.infraestrutura.utils.beans.HistoricoEntregaBean
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
 import com.lucas.sistema.entrega.view.menu.MenuGeral;
+import com.lucas.sistema.entrega.view.menu.entrega.MenuListarEntregas;
 
 public class MenuHistoricoEntrega extends Menu {
 
@@ -18,6 +19,7 @@ public class MenuHistoricoEntrega extends Menu {
 
         Menu menu = switch(entrada.toUpperCase()){
             case "1" -> new MenuRegistrarHistoricoEntrega(getLeitor(), HistoricoEntregaBeansUtil.toInstanceController());
+            case "2" -> new MenuListarEventos(getLeitor(), HistoricoEntregaBeansUtil.toInstanceController());
             case "S" -> new MenuGeral(getLeitor());
             default -> this;
         };

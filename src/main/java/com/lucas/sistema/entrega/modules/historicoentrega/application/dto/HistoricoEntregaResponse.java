@@ -10,7 +10,14 @@ public record HistoricoEntregaResponse(long id, long entregaId, LocalDateTime da
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String dataTexto = dataEvento.format(formatter);
 
-        return " | Entrega Id: " + entregaId + "\n | Data evento: " + dataTexto + "\n | Descrição: " + descricao;
+        return " | Entrega Id: " + entregaId + " | Data evento: " + dataTexto + " | Descrição: " + descricao;
     }
 
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataTexto = dataEvento.format(formatter);
+
+        return "Id: " + id + " | Entrega Id: " + entregaId + " | Data evento: " + dataTexto + " | Descrição: " + descricao;
+    }
 }

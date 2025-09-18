@@ -13,7 +13,7 @@ public class MenuListarEntregas extends Menu {
 
     private final EntregaController entregaController;
 
-    protected MenuListarEntregas(Leitor leitor, EntregaController entregaController) {
+    public MenuListarEntregas(Leitor leitor, EntregaController entregaController) {
         super(leitor);
         this.entregaController = entregaController;
     }
@@ -28,13 +28,13 @@ public class MenuListarEntregas extends Menu {
         setProximoMenu(new MenuEntrega(getLeitor()));
     }
 
-    private void chamarMenu(List<EntregaResponse> clientes) {
+    private void chamarMenu(List<EntregaResponse> entregas) {
 
         System.out.println("------------------------------------------------------------------------------");
         System.out.println("                              LISTAR ENTREGAS                                 ");
         System.out.println("------------------------------------------------------------------------------");
 
-        imprimirLista(clientes);
+        imprimirLista(entregas);
 
         System.out.println("------------------------------------------------------------------------------");
 
