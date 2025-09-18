@@ -9,8 +9,10 @@ public class MenuManager {
     }
 
     public void iniciarFluxo(){
+
         while(menuProvider.verificarContinuidade()){
             menuProvider.executarMenu();
         }
+
     }
 }
