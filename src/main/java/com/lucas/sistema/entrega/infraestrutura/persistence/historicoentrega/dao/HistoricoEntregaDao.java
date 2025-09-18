@@ -57,4 +57,38 @@ public class HistoricoEntregaDao {
 
         return eventos;
     }
+
+    public List<HistoricoEntrega> pegarHistoricoDeEntrega(long idEntrega) {
+        String consulta = """
+                SELECT FROM id, data_evento, descricao
+                FROM HistoricoEntrega he
+                WHERE e.id = ?
+                JOIN Entrega e ON e.id == he.entrega_id 
+                ORDER BY data_evento DESC
+                """;
+        List<HistoricoEntrega> eventos = new ArrayList<>();
+
+        try(Connection connection = ConexaoFactory.toInstance();
+            PreparedStatement statement = connection.prepareStatement(consulta)){
+
+            statement.setLong(1, idEntrega);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                long id = resultSet.getLong("id");
+                LocalDateTime dataEvento = resultSet.getTimestamp("data_evento").toLocalDateTime();
+                String descricao = resultSet.getString("descricao");
+
+                HistoricoEntrega evento = new HistoricoEntrega(id, dataEvento, descricao);
+                eventos.add(evento);
+            }
+
+        } catch ( SQLException sqlException){
+            throw new ConexaoDatabaseException("Erro ao conectar ao banco dados");
+        }
+
+        return eventos;
+
+    }
 }

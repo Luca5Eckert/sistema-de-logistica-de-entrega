@@ -23,4 +23,9 @@ public class HistoricoEntregaRepositoryAdapter implements HistoricoEntregaReposi
     public List<HistoricoEntrega> pegarEventos() {
        return historicoEntregaDao.pegarEventos();
     }
+
+    @Override
+    public Object pegarHistoricoDeEntrega(long idEntrega) {
+        return historicoEntregaDao.pegarHistoricoDeEntrega(idEntrega);
+    }
 }

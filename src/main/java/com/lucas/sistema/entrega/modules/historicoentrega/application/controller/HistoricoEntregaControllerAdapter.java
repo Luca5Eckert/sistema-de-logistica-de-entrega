@@ -1,5 +1,6 @@
 package com.lucas.sistema.entrega.modules.historicoentrega.application.controller;
 
+import com.lucas.sistema.entrega.modules.historicoentrega.application.dto.EventoEntregaResponse;
 import com.lucas.sistema.entrega.modules.historicoentrega.application.dto.HistoricoEntregaAdicionarRequest;
 import com.lucas.sistema.entrega.modules.historicoentrega.application.dto.HistoricoEntregaResponse;
 import com.lucas.sistema.entrega.modules.historicoentrega.application.port.HistoricoEntregaMapper;
@@ -34,6 +35,12 @@ public class HistoricoEntregaControllerAdapter implements HistoricoEntregaContro
         var eventos = historicoEntregaService.pegarEventos();
 
         return eventos.stream().map(historicoEntregaMapper::toResponse).toList();
+    }
+
+    @Override
+    public List<EventoEntregaResponse> pegarHistoricoDeEntrega(long idEntrega) {
+        var eventos = historicoEntregaService.pegarHistoricoDeEntrega(idEntrega);
+        return List.of();
     }
 
 

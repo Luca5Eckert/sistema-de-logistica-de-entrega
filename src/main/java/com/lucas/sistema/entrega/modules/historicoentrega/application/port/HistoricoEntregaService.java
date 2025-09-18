@@ -9,4 +9,6 @@ public interface HistoricoEntregaService {
     void adicionar(HistoricoEntrega historicoEntrega);
 
     List<HistoricoEntrega> pegarEventos();
+
+    Object pegarHistoricoDeEntrega(long idEntrega);
 }
