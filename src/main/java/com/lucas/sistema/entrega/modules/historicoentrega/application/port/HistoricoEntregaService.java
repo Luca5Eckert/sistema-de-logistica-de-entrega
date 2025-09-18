@@ -10,5 +10,5 @@ public interface HistoricoEntregaService {
 
     List<HistoricoEntrega> pegarEventos();
 
-    Object pegarHistoricoDeEntrega(long idEntrega);
+    List<HistoricoEntrega> pegarHistoricoDeEntrega(long idEntrega);
 }

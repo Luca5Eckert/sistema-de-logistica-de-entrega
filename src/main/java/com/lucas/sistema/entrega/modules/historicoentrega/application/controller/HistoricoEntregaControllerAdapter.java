@@ -40,7 +40,7 @@ public class HistoricoEntregaControllerAdapter implements HistoricoEntregaContro
     @Override
     public List<EventoEntregaResponse> pegarHistoricoDeEntrega(long idEntrega) {
         var eventos = historicoEntregaService.pegarHistoricoDeEntrega(idEntrega);
-        return List.of();
+        return eventos.stream().map(historicoEntregaMapper::toResponseHistoricoEntrega).toList();
     }
 
 

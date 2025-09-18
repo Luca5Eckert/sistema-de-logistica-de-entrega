@@ -32,7 +32,7 @@ public class HistoricoEntregaServiceAdapter implements HistoricoEntregaService {
     }
 
     @Override
-    public Object pegarHistoricoDeEntrega(long idEntrega) {
+    public List<HistoricoEntrega> pegarHistoricoDeEntrega(long idEntrega) {
         return historicoEntregaRepository.pegarHistoricoDeEntrega(idEntrega);
     }
 
