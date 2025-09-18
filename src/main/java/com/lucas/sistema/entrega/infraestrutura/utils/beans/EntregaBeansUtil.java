@@ -21,5 +21,8 @@ public class EntregaBeansUtil {
     public static EntregaControllerAdapter toInstanceController(){
         return ENTREGA_CONTROLLER;
     }
-    
+
+    public static EntregaRepository toInstanceRepository() {
+        return ENTREGA_REPOSITORY;
+    }
 }
