@@ -7,6 +7,7 @@ import com.lucas.sistema.entrega.view.port.HistoricoEntregaController;
 
 import java.util.List;
 
+import static com.lucas.sistema.entrega.infraestrutura.utils.ConsoleUtil.imprimir;
 import static com.lucas.sistema.entrega.infraestrutura.utils.ConsoleUtil.imprimirLista;
 
 public class MenuVisualizarHistoricoDeEntrega extends Menu {
@@ -21,6 +22,12 @@ public class MenuVisualizarHistoricoDeEntrega extends Menu {
     @Override
     public void executarMenu() {
         var idEntrega = chamarMenu();
+
+        if(idEntrega == 0) {
+            imprimir("OPERAÇÃO CANCELADA");
+            setProximoMenu(new MenuHistoricoEntrega(getLeitor()));
+            return;
+        }
 
         var historicoEntrega = historicoEntregaController.pegarHistoricoDeEntrega(idEntrega);
 
