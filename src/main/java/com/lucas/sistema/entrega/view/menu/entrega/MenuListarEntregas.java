@@ -3,7 +3,6 @@ package com.lucas.sistema.entrega.view.menu.entrega;
 import com.lucas.sistema.entrega.modules.entrega.application.dto.EntregaResponse;
 import com.lucas.sistema.entrega.view.Leitor;
 import com.lucas.sistema.entrega.view.menu.Menu;
-import com.lucas.sistema.entrega.view.menu.cliente.MenuCliente;
 import com.lucas.sistema.entrega.view.port.EntregaController;
 
 import java.util.List;
@@ -26,7 +25,7 @@ public class MenuListarEntregas extends Menu {
 
         chamarMenu(entregas);
 
-        setProximoMenu(new MenuCliente(getLeitor()));
+        setProximoMenu(new MenuEntrega(getLeitor()));
     }
 
     private void chamarMenu(List<EntregaResponse> clientes) {
