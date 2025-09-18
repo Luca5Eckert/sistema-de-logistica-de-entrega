@@ -36,12 +36,17 @@ public class MenuGeral extends Menu {
         System.out.println("------------------------------------------------------------------------------");
         System.out.println("                                  MENU GERAL                                  ");
         System.out.println("------------------------------------------------------------------------------");
+
         System.out.println(" 1- Cliente");
         System.out.println(" 2- Motorista");
         System.out.println(" 3- Pedido");
         System.out.println(" 4- Entrega");
         System.out.println(" 5- Evento de entrega");
+
         System.out.println("\n S- Sair");
+
+        System.out.println("------------------------------------------------------------------------------");
+
 
         return getLeitor().nextLine();
     }
